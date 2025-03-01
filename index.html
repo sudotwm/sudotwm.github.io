@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
+  <link rel="shortcut icon" href="icon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="HLD Terminal" />
+  <link rel="manifest" href="icon/site.webmanifest" />
+  <title>guest@hld ~$ 1.02262147</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin:0;
+      padding:0;
+      box-sizing: border-box;
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      text-shadow: 0 0px 2px hsl(33.23deg 67.98% 70.96%);
+      line-height: 1.3em;
+    }
+    body {
+      background-color: #272A36;
+      color: #F5F3F1;
+      background: linear-gradient(to top, #272a36, #1c1f2b, #272a36, #3b4159);
+      background-size: cover;
+      background-size: 100% 3px;
+    }
+    main {
+      width: 100%;
+      padding: 20px;
+      max-width: 720px;
+    }
+    .ln {
+      color: #FFCC00;
+      display: inline-block;
+      width: 50px;
+    }
+    .command {
+      color: #FF0000;
+    }
+    .keyword {
+      color: #00FFFF;
+    }
+    .string {
+      color: #FFA500;
+    }
+    .header {
+      padding: 0 20px;
+      height: 25px;
+      margin: 0;
+      background-color: #F5F3F1;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+    .prompt {
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      column-gap: 7px;
+      padding-top: 10px;
+    }
+    #null {
+     padding-top: 10px;
+    }
+    input {
+      background-color: transparent;
+      color: #F5F3F1;
+      border: none;
+    }
+    input:focus {
+      outline: none;
+    }
+    .sectionTitle {
+      color: gold;
+      font-size: 18px;
+      padding-bottom: 5px;
+      
+    }
+    .info {
+      font-size: 11px;
+      font-weight: normal;
+      color: #868da7;
+      text-shadow: none;
+    }
+    .title {
+      color: #eeb7eb;
+    }
+    .title.soc {
+      color: white;
+      display:inline-block; width: 115px
+    }
+    .error {
+      color: #ff8383;
+    }
+    .command {
+      color: #68ff99;
+    }
+    .common {
+      margin-bottom: 8px;
+    }
+    .hidden {
+      display: none;
+    }
+    .prcommand {
+      color: white;
+    }
+    a {
+      font: inherit;
+      color: inherit;
+      text-decoration: none;
+    }
+    u {
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      * {
+        font-size: 13px;
+      }
+      .title.soc {
+        width: 100%;
+        padding-top: 5px;
+      }
+      main {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main  id="cmdcont">
+    <section id="terminal">
+      <div class="command"><span class="ln" style="font-weight: normal; color: white">******</span> <span class="error" id="date"></span></div>
+      <div class="title"><span class="ln" style="font-weight: normal; color: white">******</span> 3051GW.(CWR022) - 82.09 Cols<br><span class="ln" style="font-weight: normal; color: white">******</span> <span class="string">00001 00404 Scroll ==> CSR</span></div><br>
+      <pre>██╗  ██╗██╗     ██████╗ 
+██║  ██║██║     ██╔══██╗
+███████║██║     ██║  ██║
+██╔══██║██║     ██║  ██║
+██║  ██║███████╗██████╔╝
+╚═╝  ╚═╝╚══════╝╚═════╝ </pre><br><span class="ln">000001</span> <span class="keyword">>> Hello ©/-\/V '/9µ 12€q|> +/-/|§?</span><br>
+      <span class="ln">000002</span> <span class="command">// System Online //</span><br>
+      <span class="ln">000003</span> <span class="command">// Guest Mode Engaged//</span><br>
+      <span class="ln">000004</span> <br>
+      <span class="ln">000005</span> <span class="keyword">>> User Profile:</span><br>
+      <span class="ln">000006</span> Codename: <span style="color: #ff8383">heavylildude [hld]</span><br>
+      <span class="ln">000007</span> Occupation: <span style="color: #eeb7eb">superuser</span><br>
+      <span class="ln">000008</span> Email:  <span class="string"><a href="mailto:heavylildude@gmail.com">heavylildude@gmail.com</a></span><br>
+      <span class="ln">000009</span> <br>
+      <span class="ln">000010</span> <span class="keyword">>> System Commands:</span><br>
+      <span class="ln">000011</span> Start typing <span class="command" onclick="document.getElementById('usrinp').value='about';clckcmd('about');">'<u>about</u>'</span> or <span class="command" onclick="document.getElementById('usrinp').value='contact';clckcmd('contact');">'<u>contact</u>'</span><br>
+      <span class="ln">000012</span> or <span class="command" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u>help</u>'</span> to see avail commands.<br>
+    </section>
+    <div class="prompt">
+      <span class="title">guest<span style="color: white">@hld:</span> ~$</span> <input autocomplete="off" id="usrinp"/>
+    </div>
+    <span class="info">Left-click/tap on the screen to re-focus on input.<br>Type <span class="command" style="font: inherit; color: inherit; text-shadow: none;" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u style="font: inherit; text-shadow: none;">help</u>'</span> to see list of available commands<br>or <span class="command" style="font: inherit; color: inherit; text-shadow: none;" onclick="clckcmd('reboot');">'<u style="font: inherit; text-shadow: none;">reboot</u>'</span> to restart terminal.</span><br><br><br><br><br><br><br>
+  </main>
+  <div class="hidden" id="promptClone">
+    <span class="title">guest<span style="color: white">@hld:</span> ~$</span> <span class="promtCloneInput"></span><br><span class="info">Left-click/tap on the screen to re-focus on input.</span>
+    <div class="promtCloneContent"></div>
+  </div>
+
+<!-- \\\\ -->
+
+  <div class="hidden" id="help">
+    <div class="sectionTitle">Chuck in any of these commands: </div>
+    <div class="common">
+      <div>
+        <span class="command">about</span>:
+        <div class="common">A lil’ bit about hld</div> 
+      </div>
+      <div>
+        <span class="command">contact/social</span>:
+        <div class="common">Contact infos + socials</div> 
+      </div>
+      <div>
+        <span class="command">skills</span>:
+        <div class="common">The tools hld works with</div> 
+      </div>
+      <div>
+        <span class="command">edu</span>:
+        <div class="common">hld’s service in the educational field</div> 
+      </div>
+      <div>
+        <span class="command">exp</span>:
+        <div class="common">Where hld has put in the grind</div> 
+      </div>
+      <div>
+        <span class="command">projects</span>:
+        <div class="common">Some of hld’s dope creations</div> 
+      </div>
+      <div>
+        <span class="command">calc</span>:
+        <div class="common">Yes, we have calculator. Usage example: calc 1 + 1</div> 
+      </div>
+      <div>
+        <span class="command">clear</span>:
+        <div class="common">Wipes the terminal history clean</div> 
+      </div>
+      <div>
+        <span class="command">reboot</span>:
+        <div class="common">Full system reboot</div> 
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden" id="projects">
+    <div class="sectionTitle">Proyectos: </div>
+    <div class="common">
+      <span class="title">Proyecto 1 </span> - <a href="https://github.com/user/proyecto" target="_blank"><span class="command">Link a github</span> </a>
+    </div>
+    <div class="common">
+      <span class="title">Proyecto 2 </span> - <a href="https://github.com/user/proyecto" target="_blank"><span class="command">Link a github</span> </a>
+    </div>
+    <div class="common">
+      <span class="title">Proyecto 3 </span> - <a href="https://github.com/user/proyecto" target="_blank"><span class="command">Link a github</span> </a>
+    </div>
+  </div>
+
+  <div class="hidden" id="skills">
+    <div class="sectionTitle">Skills: </div>
+    <div class="common">
+      <div>
+        <span class="command">Programming</span>:
+        <div class="common">
+          <span class="title">JavaScript | </span>
+          <span class="title">CSS | </span>
+          <span class="title">HTML | </span>
+          <span class="title">PHP | </span>
+          <span class="title">Bash | </span>
+          <span class="title">C# | </span>
+          <span class="title">LSL</span>
+        </div> 
+      </div>
+      <div>
+        <span class="command">Design</span>:
+        <div class="common">
+          <span class="title">Blender | </span>
+          <span class="title">After Effect | </span>
+          <span class="title">Indesign | </span>
+          <span class="title">Illustrator | </span>
+          <span class="title">Photoshop</span>
+        </div> 
+      </div>
+      <div>
+        <span class="command">Languages</span>:
+        <div class="common">
+          <span class="title">English | </span>
+          <span class="title">Indonesian | </span>
+          <span class="title">Javanese (basic) | </span>
+          <span class="title">Spanish (basic) | </span>
+          <span class="title">French (basic)</span>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <div class="hidden" id="about">
+    <div class="sectionTitle">Living in Technology and Innovation</div>
+      <div class="common">A seasoned full-stack developer, designer, and consultant with a robust background in web, software, mobile, and application development. His expertise extends to typography, 
+        where he is recognized as a typographer and acknowledged by <span class="command"><a href="https://luc.devroye.org/fonts-58817.html" target="_blank" title="Click to follow link"><u>international institution</u></a></span>.
+Beyond development, he serves as an adjunct professor at several <span class="command" onclick="document.getElementById('usrinp').value='edu';clckcmd('edu');"><u>universities</u></span> in Asia, sharing his knowledge and mentoring the next generation of technology professionals. His passion for continuous learning keeps him at the forefront of industry advancements. On his spare time, he's also a commisioned creator in several metaverses, specializing in scripting and digital item development, demonstrating his ability to merge creativity with technical expertise.
+      </div><br><span class="command" onclick="document.getElementById('usrinp').value='vision';clckcmd('vision');"><u>Click to read his vision >></u></span>
+  </div>
+  <div class="hidden" id="vision">
+    <div class="sectionTitle">Vision and Approach</div>
+      <div class="common">At the core of his work is a commitment to innovation, efficiency, and excellence. He approaches every project with a problem-solving mindset, striving to exceed expectations by delivering scalable, 
+      secure, and user-friendly solutions. Whether developing a high-performance web application or designing a seamless mobile experience, he ensures that technology empowers rather than complicates. He believes in the balance between 
+    cutting-edge advancements and practical implementation, tailoring his approach to meet the unique needs of each project. His goal is to develop solutions that not only solve immediate challenges but also foster long-term growth and sustainability.</div> 
+    <br><span class="command" onclick="document.getElementById('usrinp').value='strategy';clckcmd('strategy');"><u>Click to read his approaches >></u></span>
+  </div>
+  <div class="hidden" id="strategy">
+    <div class="sectionTitle">Project Excellence</div>
+      <div class="common">Collaboration and transparency are key to his consulting approach. By maintaining clear communication, agile development practices, and adaptability, he ensures that client visions are transformed into impactful digital solutions. His ability to align technical strategy with business objectives makes him a trusted partner for startups and established enterprises alike.
+From concept to execution, he remains hands-on, embedding quality, efficiency, and innovation into every stage of development. His focus is not only on delivering exceptional digital solutions but also on building lasting relationships based on trust, reliability, and shared success.</div> 
+  </div>
+  <!--  -->
+  <div class="hidden" id="edu">
+    <div class="sectionTitle">Adjunct Professor: </div>
+    <div class="common">
+      <span class="title"><a href="https://raffles-iao.com/our_campus/raffles_institute_of_higher_education_jakarta/" target="_blank" title="Click to follow link"><u>Raffles Institute of Higher Education</u></a></span><br><span class="command">Indonesia · 2018-Present</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title"><a href="https://www.uph.edu/en/homepage/" target="_blank" title="Click to follow link"><u>Universitas Pelita Harapan</u></a></span><br><span class="command">Indonesia · 2008-Present</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title"><a href="https://www.shiksha.com/college/the-gurukul-school-of-design-jaipur-56545/admission" target="_blank" title="Click to follow link"><u>Gurukul School of Design</u></a></span><br><span class="command">India · 2020</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title"><a href="https://www.umn.ac.id/" target="_blank" title="Click to follow link"><u>Universitas Multimedia Nusantara</u></a></span><br><span class="command">Indonesia · 2011-2014</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div><br>
+    </div>
+
+  <!--  -->
+  <div class="hidden" id="experience">
+    <div class="sectionTitle">Public Speaking: </div>
+    <div class="common">
+      <span class="title">Keynote Speaker - Get Ready for Industry 4.0</span><br><span class="command">Sekolah Victory Plus, Indonesia · Sep&nbsp;2020</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">Keynote Speaker - ASEAN Digital Art Society (ASEDAS)</span><br><span class="command">Universitas Esa Unggul International, Indonesia · Aug&nbsp;2020</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">Keynote Speaker - Design Roundtable</span><br><span class="command">Universitas Pelita Harapan, Indonesia · Jan&nbsp;2014</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">Gold Award - International Star Award for Quality</span><br><span class="command">International Quality Convention, Imarpress, Geneva · Jan&nbsp;2012</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">Keynote Speaker - Plaza Design Seminar</span><br><span class="command">Bina Nusantara University, Indonesia · Jan&nbsp;2011</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div><br>
+    </div>
+  </div>
+
+  <!--  -->
+  <div class="hidden" id="social">
+    <div class="sectionTitle">Online Presence & Contact Info: </div>
+    <div>
+      <span class="title soc">Public Email</span><span class="command"><a href="mailto:heavylildude@gmail.com" target="_blank"><u>heavylildude@gmail.com</u></a></span>
+    </div>
+    <div>
+      <span class="title soc">Work Email</span><span class="command"><a href="mailto:sudohld@proton.me" target="_blank"><u>sudohld@proton.me</u></a></span>
+    </div>
+    <div>
+      <span class="title soc">LinkedIn</span><span class="command"><a href="https://www.linkedin.com/in/christo-wahyudi" target="_blank"><u>www.linkedin.com/in/christo-wahyudi</u></a></span>
+    </div>
+    <div>
+      <span class="title soc">Github</span><span class="command"><a href="https://github.com/heavylildude" target="_blank"><u>heavylildude</u></a></span>
+    </div>
+  </div>
+
+  <!--  -->
+  <div class="education hidden" id="education">
+    <div class="sectionTitle">Formación: </div>
+    <div class="common">
+      <span class="title">Ing. Informático - Universidad</span> <span class="command">Finalizado 2021</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div> 
+    </div>
+    <div class="common">
+      <span class="title">Curso Fullstack- Online</span> <span class="command">Finalizado 2018</span>
+      <div class="common">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
+      </div> 
+    </div>
+  </div>
+</body>
+</html>
+<script>
+const usrinp = document.getElementById('usrinp');
+const terminal = document.getElementById('terminal');
+const cmdcont = document.getElementById('cmdcont');
+const date = document.getElementById('date');
+
+usrinp.focus();
+date.innerText = new Date().toDateString()
+window.addEventListener('click', () => {usrinp.focus();usrinp.scrollIntoView({block: 'start'});});
+usrinp.addEventListener('keydown', (event) => {
+  if (event.key === "Enter") {
+    if (usrinp.value !== '') {
+      typecmd(event);
+    } else {
+      usrinp.focus();usrinp.scrollIntoView({block: 'start'});
+    }
+  }
+})
+
+const typecmd = (event) => {
+  if (event) {  
+    const promtElement = document.getElementById('promptClone').cloneNode(true);
+    promtElement.classList.remove('hidden');
+    promtElement.getElementsByClassName('promtCloneInput')[0].innerHTML = event.target.value;
+    promtElement.setAttribute('id', null);
+    promtElement.getElementsByClassName('promtCloneContent')[0].appendChild(slctcmd(event.target.value));
+    terminal.appendChild(promtElement);
+    usrinp.value = '';
+    // usrinp.scrollIntoView({block: 'start'});
+  }
+}
+
+const clckcmd = (x) => {
+  const promtElement = document.getElementById('promptClone').cloneNode(true);
+  promtElement.classList.remove('hidden');
+  promtElement.getElementsByClassName('promtCloneInput')[0].innerHTML = x;
+  promtElement.setAttribute('id', null);
+  promtElement.getElementsByClassName('promtCloneContent')[0].appendChild(slctcmd(x));
+  terminal.appendChild(promtElement);
+  usrinp.value = '';
+  // usrinp.scrollIntoView({block: 'start'});
+}
+
+const slctcmd = (command) => {
+  const lwcmd = command.toLowerCase().trim();
+  if (lwcmd.startsWith("calc ")) {
+    try {
+      const expression = command.slice(5).trim();
+      // console.log("Raw expression:", expression);
+      if (!/^[0-9+\-*/.%()\s]+$/.test(expression)) {
+        // console.log("Invalid characters found!");
+        return cre("Invalid calculation format. Example: calc 5 + 3", true);
+      }
+      const result = new Function(`return ${expression}`)();
+      // console.log("Calculation result:", result);
+      return cre(`Result: ${result}`);
+    } catch (error) {
+      // console.log("Calculation error:", error);
+      return cre("Error: Invalid calculation.", true);
+    }
+  }
+
+  switch (lwcmd) {
+    case "help":
+    case "about":
+    case "social":
+    case "skills":
+    case "edu":
+    case "vision":
+    case "experience":
+    case "projects":
+    case "strategy":
+      return getcmd(lwcmd);
+    case "exp":
+    case "experiences":
+      return getcmd("experience");
+    case "contact":
+      return getcmd("social");
+    case "clear":
+    case "clean":
+      return clearall();
+    case "reboot":
+    case "reset":
+      return window.location.reload();
+    default:
+      return nillcmd(command);
+  }
+};
+
+const cre = (text, isError = false) => {
+  const element = document.createElement("span");
+  element.innerText = text;
+  if (isError) element.classList.add("error");
+  return element;
+};
+
+
+const getcmd = (command) => {
+  const element = document.getElementById(command).cloneNode(true);
+  element.classList.remove('hidden');
+  element.setAttribute('id', null);
+  return element;
+}
+
+const clearall = () => {
+  terminal.innerHTML = '';
+  const element = document.createElement('span');
+  return element;
+}
+
+const nillcmd = (command) => {
+  const element = document.createElement('span');
+  element.innerText = `-bash: ${command}: command not found`;
+  element.classList.add('error');
+  return element;
+}
+</script>
