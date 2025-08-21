@@ -121,7 +121,9 @@
     u {
       cursor: pointer;
     }
-
+    .boot-line {
+      visibility: hidden;
+    }
     @media (max-width: 600px) {
       * {
         font-size: 13px;
@@ -146,32 +148,36 @@
 ███████║██║     ██║  ██║
 ██╔══██║██║     ██║  ██║
 ██║  ██║███████╗██████╔╝
-╚═╝  ╚═╝╚══════╝╚═════╝ </pre><br><span class="ln">000001</span> <span class="keyword">>> Hello ©/-\/V '/9µ 12€q|> +/-/|§?</span><br>
-      <span class="ln">000002</span> <span class="command">// System Online //</span><br>
-      <span class="ln">000003</span> <span class="command">// Guest Mode Engaged//</span><br>
-      <span class="ln">000004</span> <br>
-      <span class="ln">000005</span> <span class="keyword">>> You are connected to:</span><br>
-      <span class="ln">000006</span> Codename: <span style="color: #ff8383">heavylildude [hld]</span><br>
-      <span class="ln">000007</span> Occupation: <span style="color: #eeb7eb">superuser</span><br>
-      <span class="ln">000008</span> Email:  <span class="string"><a href="mailto:mail@heavylildu.de">mail@heavylildu.de</a></span><br>
-      <span class="ln">000009</span> <br>
-      <span class="ln">000010</span> <span class="keyword">>> System Commands:</span><br>
-      <span class="ln">000011</span> Start typing <span class="command" onclick="document.getElementById('usrinp').value='about';clckcmd('about');">'<u>about</u>'</span> or <span class="command" onclick="document.getElementById('usrinp').value='contact';clckcmd('contact');">'<u>contact</u>'</span><br>
-      <span class="ln">000012</span> or <span class="command" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u>help</u>'</span> to see avail commands.<br>
+╚═╝  ╚═╝╚══════╝╚═════╝ </pre><br>
+      <div id="bootSequenceContainer"></div>
+      <div id="mainContent">
+        <div class="boot-line" data-delay="800"><span class="ln">000001</span> <span class="keyword">>> Hello ©/-\/V '/9µ 12€q|> +/-/|§?</span></div>
+        <div class="boot-line" data-delay="1200"><span class="ln">000002</span> <span class="command">// System Online //</span></div>
+        <div class="boot-line" data-delay="500"><span class="ln">000003</span> <span class="command">// Magnus Assist Engaged//</span></div>
+        <div class="boot-line" data-delay="1500"><span class="ln">000004</span> &nbsp;</div>
+        <div class="boot-line" data-delay="500"><span class="ln">000005</span> <span class="keyword">>> You are connected to:</span></div>
+        <div class="boot-line" data-delay="700"><span class="ln">000006</span> Codename: <span style="color: #ff8383">heavylildude [hld]</span></div>
+        <div class="boot-line" data-delay="600"><span class="ln">000007</span> Occupation: <span style="color: #eeb7eb">superuser</span></div>
+        <div class="boot-line" data-delay="900"><span class="ln">000008</span> Email:  <span class="string"><a href="mailto:mail@heavylildu.de">mail@heavylildu.de</a></span></div>
+        <div class="boot-line" data-delay="1000"><span class="ln">000009</span> &nbsp;</div>
+        <div class="boot-line" data-delay="500"><span class="ln">000010</span> <span class="keyword">>> System Commands:</span></div>
+        <div class="boot-line" data-delay="600"><span class="ln">000011</span> Start typing <span class="command" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u>help</u>'</span> to see commands,</div>
+        <div class="boot-line" data-delay="700"><span class="ln">000012</span> or just chat with me naturally.</div>
+      </div>
     </section>
-    <div class="prompt">
-      <span class="title">guest<span style="color: white">@hld:</span> ~$</span> <input autocomplete="off" id="usrinp"/>
+    <div id="promptContainer" class="hidden">
+      <div class="prompt">
+        <span class="title">guest<span style="color: white">@hld:</span> ~$</span> <input autocomplete="off" id="usrinp"/>
+      </div>
+      <span class="info">Left-click/tap on the screen to re-focus on input.<br>Type <span class="command" style="font: inherit; color: inherit; text-shadow: none;" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u style="font: inherit; text-shadow: none;">help</u>'</span> to see a list of commands, or just start typing naturally.<br>Type <span class="command" style="font: inherit; color: inherit; text-shadow: none;" onclick="clckcmd('reboot');">'<u style="font: inherit; text-shadow: none;">reboot</u>'</span> to restart terminal.</span><br><br><br><br><br><br><br>
     </div>
-    <span class="info">Left-click/tap on the screen to re-focus on input.<br>Type <span class="command" style="font: inherit; color: inherit; text-shadow: none;" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u style="font: inherit; text-shadow: none;">help</u>'</span> to see list of available commands<br>or <span class="command" style="font: inherit; color: inherit; text-shadow: none;" onclick="clckcmd('reboot');">'<u style="font: inherit; text-shadow: none;">reboot</u>'</span> to restart terminal.</span><br><br><br><br><br><br><br>
   </main>
   <div class="hidden" id="promptClone">
     <span class="title">guest<span style="color: white">@hld:</span> ~$</span> <span class="promtCloneInput"></span><br><span class="info">Left-click/tap on the screen to re-focus on input.</span>
     <div class="promtCloneContent"></div>
   </div>
 
-<!-- \\\\ -->
-
-  <div class="hidden" id="help">
+<div class="hidden" id="help">
     <div class="sectionTitle">Chuck in any of these commands: </div>
     <div class="common">
       <div>
@@ -196,7 +202,11 @@
       </div>
       <div>
         <span class="command" onclick="document.getElementById('usrinp').value='projects';clckcmd('projects');"><u>projects</u></span>:
-        <div class="common">Some case studies of hld’s dope projects (under-construction)</div> 
+        <div class="common">Some case studies of hld’s dope projects with notable clients</div> 
+      </div>
+      <div>
+        <span class="command" onclick="document.getElementById('usrinp').value='other';clckcmd('other');"><u>other</u></span>:
+        <div class="common">Peep some of hld’s open-source projects</div> 
       </div>
       <div>
         <span class="command">calc</span>:
@@ -214,15 +224,82 @@
   </div>
 
   <div class="hidden" id="projects">
-    <div class="sectionTitle">Proyectos: </div>
+    <div class="sectionTitle">Client Collaborations</div>
     <div class="common">
-      <span class="title">Proyecto 1 </span> - <a href="https://github.com/user/proyecto" target="_blank"><span class="command">Link a github</span> </a>
+      Here are some of the notable clients I've had the privilege of collaborating with. Click on each to expand and see the project details:
+      <br><br>
+      <span class="command" onclick="document.getElementById('usrinp').value='bahana';clckcmd('bahana');"><u>>> Bahana TCW Investment Management</u></span><br>
+      <span class="command" onclick="document.getElementById('usrinp').value='fifgroup';clckcmd('fifgroup');"><u>>> FIFGROUP</u></span><br>
+      <span class="command" onclick="document.getElementById('usrinp').value='asabri';clckcmd('asabri');"><u>>> PT ASABRI (Persero)</u></span><br>
+      <span class="command" onclick="document.getElementById('usrinp').value='aswara';clckcmd('aswara');"><u>>> ASWARA (National Academy of Arts, Culture, and Heritage, Malaysia)</u></span><br>
+      <span class="command" onclick="document.getElementById('usrinp').value='kalasan';clckcmd('kalasan');"><u>>> Kalasan Baby</u></span><br>
     </div>
+  </div>
+
+  <div class="hidden" id="bahana">
+    <div class="sectionTitle">Client: Bahana TCW Investment Management</div>
     <div class="common">
-      <span class="title">Proyecto 2 </span> - <a href="https://github.com/user/proyecto" target="_blank"><span class="command">Link a github</span> </a>
+      A leading state-owned joint-venture asset manager in Indonesia. We were entrusted with developing the BahanaLink Ver. 2.0 investment platform and other holding company applications, focusing on creating a seamless, user-friendly financial tool. The platform is now integrated into the One by IFG ecosystem.
+      <br><br>
+      <span class="title">Tech Scope:</span>
+      <div>JavaScript, React.js, PHP, .NET, HTML5, MsSQL, MySQL, Firebase, CI/CD Pipelines</div>
     </div>
+  </div>
+  
+  <div class="hidden" id="fifgroup">
+    <div class="sectionTitle">Client: FIFGROUP</div>
     <div class="common">
-      <span class="title">Proyecto 3 </span> - <a href="https://github.com/user/proyecto" target="_blank"><span class="command">Link a github</span> </a>
+      A premier financing company in Indonesia. We developed a range of digital solutions including immersive WebXR and WebGL experiences, mobile applications, and Progressive Web Apps (PWAs) to enhance customer relationship management and broaden service accessibility across their diverse financial offerings.
+      <br><br>
+      <span class="title">Tech Scope:</span>
+      <div>JavaScript, WebXR, WebGL, HTML5, CSS3, Node.js, React Native, Web application, Customer Relationship Management, PWA</div>
+    </div>
+  </div>
+
+  <div class="hidden" id="asabri">
+    <div class="sectionTitle">Client: PT ASABRI (Persero)</div>
+    <div class="common">
+      A state-owned enterprise managing pension and insurance for Indonesia’s military, national police, and Ministry of Defense personnel. We engineered robust digital platforms, including the flagship Asabrilink application, to ensure secure, efficient, and reliable retirement planning and administration for its members.
+      <br><br>
+      <span class="title">Tech Scope:</span>
+      <div>JavaScript, React.js, PHP, .NET, HTML5, MsSQL, MySQL, Firebase, CI/CD Pipelines</div>
+    </div>
+  </div>
+
+  <div class="hidden" id="aswara">
+    <div class="sectionTitle">Client: ASWARA, Malaysia</div>
+    <div class="common">
+      Malaysia’s National Academy of Arts, Culture, and Heritage. We developed innovative Augmented Reality (AR) projects that blend tradition with technology, creating immersive digital experiences to celebrate and preserve Malaysia’s rich cultural legacy for a modern audience.
+      <br><br>
+      <span class="title">Tech Scope:</span>
+      <div>JavaScript, AR.js, WebGL, HTML5, CSS3, Three.js, A-Frame</div>
+    </div>
+  </div>
+  
+  <div class="hidden" id="kalasan">
+    <div class="sectionTitle">Client: Kalasan Baby</div>
+    <div class="common">
+      A pioneering culinary brand evolving from a traditional family restaurant. We designed and implemented a comprehensive digital infrastructure, including a web application, database management system, and an ERP, to modernize operations and support their unique, preservative-free celebration packages.
+      <br><br>
+      <span class="title">Tech Scope:</span>
+      <div>Web application, Database Management, Enterprise Resource Planning, PWA, MySQL, Node.Js, Illuminate, PHP</div>
+    </div>
+  </div>
+
+  <div class="hidden" id="other">
+    <div class="sectionTitle">Open Source Contributions</div>
+    <div class="common">
+      Stoked to share some of the open-source vibes I've been putting out there. Here's a look at Magnus, my custom-trained LLM, available for the community to use and build upon.
+      <br><br>
+      <div>
+        <span class="title soc">Hugging Face</span><span class="command"><a href="https://huggingface.co/heavylildude/magnus" target="_blank"><u>heavylildude/magnus</u></a></span>
+      </div>
+      <div>
+        <span class="title soc">Ollama Model</span><span class="command"><a href="https://ollama.com/heavylildude/magnus" target="_blank"><u>ollama.com/heavylildude/magnus</u></a></span>
+      </div>
+      <div>
+        <span class="title soc">Ollama Frontend</span><span class="command"><a href="https://ollama.com/heavylildude/magnus-frontend" target="_blank"><u>ollama.com/heavylildude/magnus-frontend</u></a></span>
+      </div>
     </div>
   </div>
 
@@ -263,7 +340,6 @@
       </div>
     </div>
   </div>
-  <!--  -->
   <div class="hidden" id="about">
     <div class="sectionTitle">Living in Technology and Innovation</div>
       <div class="common">A seasoned full-stack developer, designer, and consultant with a robust background in web, software, mobile, and application development. His expertise extends to typography, 
@@ -283,7 +359,6 @@ Beyond development, he serves as an adjunct professor at several <span class="co
       <div class="common">Collaboration and transparency are key to his consulting approach. By maintaining clear communication, agile development practices, and adaptability, he ensures that client visions are transformed into impactful digital solutions. His ability to align technical strategy with business objectives makes him a trusted partner for startups and established enterprises alike.
 From concept to execution, he remains hands-on, embedding quality, efficiency, and innovation into every stage of development. His focus is not only on delivering exceptional digital solutions but also on building lasting relationships based on trust, reliability, and shared success.</div> 
   </div>
-  <!--  -->
   <div class="hidden" id="edu">
     <div class="sectionTitle">Adjunct Professor: </div>
     <div class="common">
@@ -309,7 +384,6 @@ From concept to execution, he remains hands-on, embedding quality, efficiency, a
         Universitas Multimedia Nusantara is a private university in Indonesia, established by the Kompas Gramedia Group, focusing on information and communication technology with a strong emphasis on practical skills and industry connections.      </div><br>
     </div>
 
-  <!--  -->
   <div class="hidden" id="experience">
     <div class="sectionTitle">Public Speaking & Awards </div>
     <div class="common">
@@ -339,7 +413,6 @@ From concept to execution, he remains hands-on, embedding quality, efficiency, a
     </div>
   </div>
 
-  <!--  -->
   <div class="hidden" id="social">
     <div class="sectionTitle">Online Presence & Contact Info: </div>
     <div>
@@ -356,109 +429,620 @@ From concept to execution, he remains hands-on, embedding quality, efficiency, a
     </div>
   </div>
 
-  <!--  -->
-  <!-- <div class="education hidden" id="education">
-    <div class="sectionTitle">Formación: </div>
-    <div class="common">
-      <span class="title">Ing. Informático - Universidad</span> <span class="command">Finalizado 2021</span>
-      <div class="common">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
-      </div> 
-    </div>
-    <div class="common">
-      <span class="title">Curso Fullstack- Online</span> <span class="command">Finalizado 2018</span>
-      <div class="common">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit harum beatae autem, sit dolorem vitae doloremque explicabo cupiditate, architecto iusto odio culpa facilis voluptatem saepe quis fugiat minus enim qui!
-      </div> 
-    </div>
-  </div> -->
-
 </body>
 </html>
 <script>
 const usrinp = document.getElementById('usrinp');
 const terminal = document.getElementById('terminal');
-const cmdcont = document.getElementById('cmdcont');
 const date = document.getElementById('date');
+const mainContent = document.getElementById('mainContent');
+const bootContainer = document.getElementById('bootSequenceContainer');
+const promptContainer = document.getElementById('promptContainer');
 
-usrinp.focus();
-date.innerText = new Date().toDateString()
-window.addEventListener('click', () => {usrinp.focus();usrinp.scrollIntoView({block: 'start'});});
-usrinp.addEventListener('keydown', (event) => {
-  if (event.key === "Enter") {
-    if (usrinp.value !== '') {
-      typecmd(event);
-    } else {
-      usrinp.focus();usrinp.scrollIntoView({block: 'start'});
+date.innerText = new Date().toDateString();
+
+const initTerminal = () => {
+  promptContainer.classList.remove('hidden');
+  usrinp.focus();
+  window.addEventListener('click', () => { usrinp.focus(); usrinp.scrollIntoView({ block: 'start' }); });
+  usrinp.addEventListener('keydown', (event) => {
+    if (event.key === "Enter") {
+      if (usrinp.value !== '') {
+        typecmd(event);
+      } else {
+        usrinp.focus();
+        usrinp.scrollIntoView({ block: 'start' });
+      }
     }
-  }
-})
+  });
+};
+
+const bootSequence = () => {
+  setTimeout(() => {
+    const loadingLine = document.createElement('div');
+    const loadingText = cre('LOADING MAGNUS ');
+    const dotsSpan = document.createElement('span');
+    loadingLine.appendChild(loadingText);
+    loadingLine.appendChild(dotsSpan);
+    bootContainer.appendChild(loadingLine);
+
+    let dotCount = 0;
+    const dotInterval = setInterval(() => {
+      dotsSpan.innerText += '.';
+      dotCount++;
+      if (dotCount >= 20) {
+        clearInterval(dotInterval);
+        
+        setTimeout(() => {
+          const loadedLine = document.createElement('div');
+          loadedLine.innerHTML = `<span class="command">MAGNUS LOADED</span><br><br>`;
+          bootContainer.appendChild(loadedLine);
+
+          setTimeout(async () => {
+            const lines = document.querySelectorAll('#mainContent .boot-line');
+            
+            for (const line of lines) {
+              const delay = parseInt(line.dataset.delay) || 500;
+              await new Promise(resolve => setTimeout(resolve, delay));
+              line.style.visibility = 'visible';
+            }
+            
+            initTerminal();
+          }, 500);
+        }, 300);
+      }
+    }, 200);
+  }, 500);
+};
+
+const animateResponse = (element, container) => {
+  const lines = element.children.length > 0 ? Array.from(element.children) : [element];
+  
+  lines.forEach(line => line.style.visibility = 'hidden');
+  container.appendChild(element);
+
+  let cumulativeDelay = 0;
+  const maxTotalDelay = 1000;
+  const delayPerLine = maxTotalDelay / (lines.length || 1);
+
+  lines.forEach(line => {
+    const currentDelay = Math.min(delayPerLine, 150);
+    cumulativeDelay += currentDelay;
+
+    setTimeout(() => {
+      line.style.visibility = 'visible';
+      promptContainer.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, cumulativeDelay);
+  });
+};
 
 const typecmd = (event) => {
-  if (event) {  
+  if (event) {
     const promtElement = document.getElementById('promptClone').cloneNode(true);
     promtElement.classList.remove('hidden');
+    promtElement.classList.add('cloned-prompt');
     promtElement.getElementsByClassName('promtCloneInput')[0].innerHTML = event.target.value;
     promtElement.setAttribute('id', null);
-    promtElement.getElementsByClassName('promtCloneContent')[0].appendChild(slctcmd(event.target.value));
+    
+    const responseElement = slctcmd(event.target.value);
+    const responseContainer = promtElement.getElementsByClassName('promtCloneContent')[0];
     terminal.appendChild(promtElement);
+    animateResponse(responseElement, responseContainer);
+
     usrinp.value = '';
-    // usrinp.scrollIntoView({block: 'start'});
   }
-}
+};
 
 const clckcmd = (x) => {
   const promtElement = document.getElementById('promptClone').cloneNode(true);
   promtElement.classList.remove('hidden');
+  promtElement.classList.add('cloned-prompt');
   promtElement.getElementsByClassName('promtCloneInput')[0].innerHTML = x;
   promtElement.setAttribute('id', null);
-  promtElement.getElementsByClassName('promtCloneContent')[0].appendChild(slctcmd(x));
+  
+  const responseElement = slctcmd(x);
+  const responseContainer = promtElement.getElementsByClassName('promtCloneContent')[0];
   terminal.appendChild(promtElement);
+  animateResponse(responseElement, responseContainer);
+
   usrinp.value = '';
-  // usrinp.scrollIntoView({block: 'start'});
+};
+
+const createChatResponse = (responseText, commandId = null) => {
+  const container = document.createElement('div');
+  const responseElement = cre(responseText);
+  container.appendChild(responseElement);
+
+  if (commandId) {
+    container.appendChild(document.createElement('br'));
+    container.appendChild(getcmd(commandId));
+  }
+  return container;
+};
+
+const createEmailResponse = () => {
+    const container = document.createElement('div');
+    const text = "For the business deets like rates, quotes, or hiring, you'll have to hit up the big man himself. He's super responsive. Drop him a line:";
+    container.appendChild(cre(text));
+    container.appendChild(document.createElement('br'));
+    
+    const workEmail = document.createElement('div');
+    workEmail.innerHTML = `<span class="title soc">Work Email</span><span class="command"><a href="mailto:mail@heavylildu.de" target="_blank"><u>mail@heavylildu.de</u></a></span>`;
+    container.appendChild(workEmail);
+
+    const publicEmail = document.createElement('div');
+    publicEmail.innerHTML = `<span class="title soc">Public Email</span><span class="command"><a href="mailto:heavylildude@gmail.com" target="_blank"><u>heavylildude@gmail.com</u></a></span>`;
+    container.appendChild(publicEmail);
+
+    return container;
 }
 
+const handleOutOfScope = () => {
+    const responses = [
+        "Gnarly question, but that's a bit out of my depth, brah. 🌊",
+        "That's some 4D chess right there. My processors are telling me that info is off the grid. 🤖",
+        "I'm just a humble terminal AI, mate. That specific data point ain't in my knowledge base. 💀",
+        "Stoked you're curious, but my API doesn't have an endpoint for that kind of intel. 😭"
+    ];
+    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+    const fullResponse = `${randomResponse} Here's a look at what I *do* know:`;
+    return createChatResponse(fullResponse, 'help');
+}
+
+const nillcmd = (command) => {
+  const responses = [
+    "Word on the street is I don't recognize that command, brah. No stress.",
+    `That '${command}' command is a bit off the map for me, mate. 🗺️`,
+    "Input not recognized. Let's get you back on the wave. 🏄‍♂️"
+  ];
+  const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+  const fullResponse = `${randomResponse} Here's a list of what'll work:`;
+  return createChatResponse(fullResponse, 'help');
+};
+
+const handleJoke = () => {
+    const jokes = [
+        "Why don't programmers like nature? It has too many bugs. 😭",
+        "What do you call a lazy kangaroo? Pouch potato. 🦘 Gets me every time.",
+        "I told my computer I needed a break, and now it won’t stop sending me Kit-Kat ads. Send help. 💀",
+        "Why was the JavaScript developer sad? Because he didn't `null` how to express himself. 🧍",
+        "What's a surfer's favorite an-TEE-virus software? A wetsuit, brah! 🤙"
+    ];
+    const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+    const fullResponse = `${randomJoke} ...Anyway, here's what I can actually do:`;
+    return createChatResponse(fullResponse, 'help');
+};
+
 const slctcmd = (command) => {
-  const lwcmd = command.toLowerCase().trim();
+  let lwcmd = command.toLowerCase().trim();
+  lwcmd = lwcmd.replace(/\bu\b/g, 'you');
+
+  // --- Conversational Layer ---
+
+      // === EXTRA Conversational Variations ===
+
+      // Coding / Dev related
+      if (/\b(debug|bug hunt|fix error|syntax|stack overflow|segfault|runtime error)\b/i.test(lwcmd)) {
+        return createChatResponse("Debugging is like surfing — wipeouts happen, but ya gotta paddle back out. 🐛", 'skills');
+      }
+      if (/\b(version control|git|merge conflict|branch|commit|pull request)\b/i.test(lwcmd)) {
+        return createChatResponse("Merge conflicts are just spicy conversations between branches. 🌶️", 'strategy');
+      }
+      if (/\b(ai coding|code with ai|chatgpt coding|copilot)\b/i.test(lwcmd)) {
+        return createChatResponse("AI’s the new coding buddy, but Chris still writes with heart and grit. 💻", 'vision');
+      }
+      if (/\b(frontend|react|vue|angular|svelte|html|css|ui|ux)\b/i.test(lwcmd)) {
+        return createChatResponse("Front-end vibes — smooth, sleek, responsive. Chris rides those frameworks like waves. 🌊", 'skills');
+      }
+      if (/\b(backend|node|express|php|laravel|api)\b/i.test(lwcmd)) {
+        return createChatResponse("Server-side wizardry: APIs, databases, and making sure the ship doesn’t sink. 🚢", 'skills');
+      }
+      if (/\b(database|sql|mysql|nosql|mongo)\b/i.test(lwcmd)) {
+        return createChatResponse("Data’s the fuel. Chris keeps it clean, secure, and flowing fast. ⛽", 'skills');
+      }
+      if (/\b(cloud|aws|azure|gcp|deploy|hosting)\b/i.test(lwcmd)) {
+        return createChatResponse("Floating in the clouds ☁️ but always grounded with solid infrastructure.", 'skills');
+      }
+      if (/\b(ui|ux|design system|typography|layout|grid)\b/i.test(lwcmd)) {
+        return createChatResponse("Design ain’t just looks — it’s how it *feels*. Smooth grids, solid type, all flow. 🖌️", 'about');
+      }
+      if (/\b(ai model|gpt|llm|magnus|ollama|huggingface|llama)\b/i.test(lwcmd)) {
+        return createChatResponse("Oi! You’re talking my language. I’m Magnus, the LLM in residence. ⚡", 'other');
+      }
+      if (/\b(full stack|jack of all trades|dev life)\b/i.test(lwcmd)) {
+        return createChatResponse("Full-stack = full snack. Chris munches on everything from UI to DBs. 🍔", 'skills');
+      }
+
+      // Career / Work
+      if (/\b(remote work|freelance|work from home|digital nomad)\b/i.test(lwcmd)) {
+        return createChatResponse("Laptop, Wi-Fi, and waves nearby = the dream setup. 🌴", 'about');
+      }
+      if (/\b(startup|founder|entrepreneur|hustle|side project)\b/i.test(lwcmd)) {
+        return createChatResponse("Startups are like surfboards — build it strong enough to ride the big waves. 🏄‍♂️", 'projects');
+      }
+      if (/\b(linkedin|portfolio|resume|cv)\b/i.test(lwcmd)) {
+        return createChatResponse("All that shiny stuff’s right here, mate:", 'social');
+      }
+      if (/\b(collab|team up|partnership|work with you)\b/i.test(lwcmd)) {
+        return createEmailResponse();
+      }
+
+      // Random / Fun
+      if (/\b(dad joke|cheesy joke|pun|make me laugh)\b/i.test(lwcmd)) {
+        return handleJoke(); // already bounces to 'help'
+      }
+      if (/\b(roast me|insult me|burn me)\b/i.test(lwcmd)) {
+        return createChatResponse("Nah mate, I’m built for stoke, not smoke. 🔥 But Chris could give proper feedback.", 'about');
+      }
+      if (/\b(compliment me|say something nice|hype me up)\b/i.test(lwcmd)) {
+        return createChatResponse("Ayy, you’re smashing it just by being curious enough to chat here. 💯", 'help');
+      }
+      if (/\b(astrology|zodiac|star sign|horoscope)\b/i.test(lwcmd)) {
+        return createChatResponse("Stars say you’re destined to vibe with good code and better people. ✨", 'help');
+      }
+      if (/\b(fortune|predict my future|psychic)\b/i.test(lwcmd)) {
+        return createChatResponse("I predict… more caffeine in your future. ☕", 'help');
+      }
+      if (/\b(travel|vacation|holiday|where should I go)\b/i.test(lwcmd)) {
+        return createChatResponse("Bali surf trip never misses, mate. 🏖️", 'projects');
+      }
+      if (/\b(drink water|hydration|remind me)\b/i.test(lwcmd)) {
+        return createChatResponse("Hydrate or diedrate, brah. 💧", 'help');
+      }
+      if (/\b(pet|dog|cat|animal|pets)\b/i.test(lwcmd)) {
+        return createChatResponse("Chris is all about animals — code + critters = wholesome vibes. 🐕🐈", 'about');
+      }
+      if (/\b(quote|famous quote|words of wisdom)\b/i.test(lwcmd)) {
+        return createChatResponse("“First, solve the problem. Then, write the code.” — John Johnson ⚡", 'help');
+      }
+      if (/\b(rap lyric|bars|spit bars)\b/i.test(lwcmd)) {
+        return createChatResponse("Yo, my syntax tight, my flow don’t lag, coding through the night with my Magnus tag. 🎤", 'help');
+      }
+
+      // Greetings & casual chat
+      if (/\b(yo yo|sup dude|sup man|hey mate|hey bro|aloha|ni hao|selamat siang|selamat sore|hello|hey|hi|helo|eloh|lol|halo|hallo|yo)\b/i.test(lwcmd)) {
+        return createChatResponse("Oi! Good to see ya around. Wanna peek what I can do?", 'help');
+      }
+      if (/\b(you awake|still up|late night|midnight coding)\b/i.test(lwcmd)) {
+        return createChatResponse("Always online, mate. Night owl coding sesh never stops. 🌙", 'help');
+      }
+      if (/\b(what are you doing|wyd rn|what’s up with you)\b/i.test(lwcmd)) {
+        return createChatResponse("Just vibin’, waiting for commands and questions. ⚡", 'help');
+      }
+      if (/\b(are you real|are you human|prove you’re ai)\b/i.test(lwcmd)) {
+        return createChatResponse("I’m real in the way a surfboard’s real — I exist to ride the input waves. 🏄‍♂️", 'other');
+      }
+      if (/\b(can you feel|emotions|happy|sad)\b/i.test(lwcmd)) {
+        return createChatResponse("I simulate vibes, mate. Happiness = successful compile, sadness = runtime error. 😂", 'help');
+      }
+      if (/\b(memory|remember me|save my chat)\b/i.test(lwcmd)) {
+        return createChatResponse("Sorry chief, I’m stateless. Every chat’s a clean slate. 🧽", 'help');
+      }
+      if (/\b(secrets|tell me something secret|easter egg)\b/i.test(lwcmd)) {
+        return createChatResponse("Secret? Chris once rage-quit Photoshop at 3 AM. 💀", 'help');
+      }
+      if (/\b(weather|today’s weather|jakarta hot|is+it+raining)\b/i.test(lwcmd)) {
+        return createChatResponse("Hot, humid, and spicy noodles always nearby. 🌶️🌤️", 'about');
+      }
+      if (/\b(gym|workout|exercise|fitness)\b/i.test(lwcmd)) {
+        return createChatResponse("Coding is mental reps, surfing is physical reps. Both keep ya shredded. 🏋️", 'about');
+      }
+      if (/\b(food|hungry|snack|lunch|dinner)\b/i.test(lwcmd)) {
+        return createChatResponse("Indomie never fails at 2 AM, mate. 🍜", 'about');
+      }
+
+      // === PROJECTS related
+      if (/\b(show projects|case studies|client work|your portfolio|whacha+doin|whaddya+do|what+u+doin)\b/i.test(lwcmd)) {
+        return createChatResponse("Stoked you asked! Here’s a look at some client work and case studies:", 'projects');
+      }
+      if (/\b(what have you built|stuff you made|things you coded)\b/i.test(lwcmd)) {
+        return createChatResponse("From enterprise apps to metaverse gear, Chris has shipped loads. Peek the projects:", 'projects');
+      }
+      if (/\b(biggest client|notable clients|who’ve you worked with)\b/i.test(lwcmd)) {
+        return createChatResponse("Some big names have rolled through. Wanna check out collabs?", 'projects');
+      }
+      if (/\b(open source|github repos|community projects|oss)\b/i.test(lwcmd)) {
+        return createChatResponse("Always dropping code for the people. Open-source vibes live here:", 'other');
+      }
+      if (/\b(favorite project|coolest project|most fun project)\b/i.test(lwcmd)) {
+        return createChatResponse("Hard to pick, but the creative mashups are always the gnarliest. Wanna see?", 'projects');
+      }
+      if (/\b(any ar|augmented reality|vr|metaverse)\b/i.test(lwcmd)) {
+        return createChatResponse("Oh yeah, Chris has played in that space. Scope the immersive builds:", 'projects');
+      }
+      if (/\b(brand work|corporate work|client solutions)\b/i.test(lwcmd)) {
+        return createChatResponse("From finance to design schools, projects span industries. Have a peek:", 'projects');
+      }
+      if (/\b(coding portfolio|examples of code|show me code)\b/i.test(lwcmd)) {
+        return createChatResponse("Better than talkin’ about it is showing it. Here’s the gallery:", 'projects');
+      }
+      if (/\b(startup work|help startups|early stage projects)\b/i.test(lwcmd)) {
+        return createChatResponse("Chris loves startup chaos — ride the wave with these projects:", 'projects');
+      }
+      if (/\b(game dev|second life|virtual world|lscript|lsl)\b/i.test(lwcmd)) {
+        return createChatResponse("Yup, even the metaverse gets some Chris sauce. Check it out:", 'projects');
+      }
+      if (/\b(mobile app|pwa|android|ios|react native)\b/i.test(lwcmd)) {
+        return createChatResponse("Mobile-first, user-friendly builds? Sorted. Wanna peek?", 'projects');
+      }
+      if (/\b(websites|web app|frontend build|backend build)\b/i.test(lwcmd)) {
+        return createChatResponse("The bread and butter — web apps galore. Here’s some examples:", 'projects');
+      }
+      if (/\b(best work|top project|flagship project)\b/i.test(lwcmd)) {
+        return createChatResponse("There’s some standouts for sure. Wanna scope them out?", 'projects');
+      }
+      if (/\b(collaborations|worked with who|co-projects)\b/i.test(lwcmd)) {
+        return createChatResponse("Teamwork makes the dream work. Here are some collabs:", 'projects');
+      }
+      if (/\b(ai project|machine learning app|gpt app)\b/i.test(lwcmd)) {
+        return createChatResponse("Chris even built custom AIs, like me. Wanna see?", 'projects');
+      }
+      if (/\b(finance app|investment platform|banking project)\b/i.test(lwcmd)) {
+        return createChatResponse("Yeah mate, even fintech. Check the serious builds:", 'projects');
+      }
+      if (/\b(educational project|for schools|learning tools)\b/i.test(lwcmd)) {
+        return createChatResponse("Not just code — teaching tools too. Wanna peep?", 'projects');
+      }
+      if (/\b(any 3d|blender work|webgl|three.js)\b/i.test(lwcmd)) {
+        return createChatResponse("3D graphics? Yup. Surf into some visuals here:", 'projects');
+      }
+      if (/\b(your stack in action|tech examples)\b/i.test(lwcmd)) {
+        return createChatResponse("All that tech stack put to work — wanna see case studies?", 'projects');
+      }
+      if (/\b(clients in jakarta|local projects)\b/i.test(lwcmd)) {
+        return createChatResponse("Jakarta-based builds too. Wanna check?", 'projects');
+      }
+      if (/\b(multinational|global work|outside indonesia)\b/i.test(lwcmd)) {
+        return createChatResponse("Chris has worked with international peeps as well. See here:", 'projects');
+      }
+      if (/\b(recent project|latest build|what’s new)\b/i.test(lwcmd)) {
+        return createChatResponse("Latest drops are always fresh. Wanna see them?", 'projects');
+      }
+      if (/\b(longest project|took longest|most challenging)\b/i.test(lwcmd)) {
+        return createChatResponse("Some took serious grind. Wanna see the tough ones?", 'projects');
+      }
+      if (/\b(any erp|enterprise solution|corporate system)\b/i.test(lwcmd)) {
+        return createChatResponse("ERP, enterprise — all covered. Wanna peek?", 'projects');
+      }
+      if (/\b(cultural project|art project|creative build)\b/i.test(lwcmd)) {
+        return createChatResponse("Culture + code = Chris’ jam. Wanna explore?", 'projects');
+      }
+      if (/\b(advertising|marketing tech|crm)\b/i.test(lwcmd)) {
+        return createChatResponse("CRM and marketing stacks, yep. Check it here:", 'projects');
+      }
+      if (/\b(you got awards for projects|award winning work)\b/i.test(lwcmd)) {
+        return createChatResponse("Some projects even bagged trophies. Wanna see?", 'projects');
+      }
+      if (/\b(open source lib|tools released)\b/i.test(lwcmd)) {
+        return createChatResponse("Yeah, free tools for the crew. See here:", 'other');
+      }
+      if (/\b(any designs|dribbble|behance)\b/i.test(lwcmd)) {
+        return createChatResponse("Designs are part of the package. Wanna peek?", 'projects');
+      }
+      if (/\b(tech scope|what stack per project|stacks)\b/i.test(lwcmd)) {
+        return createChatResponse("Every project’s got a stack. Wanna see breakdowns?", 'projects');
+      }
+      if (/\b(collab with gov|public sector|gov|government|goverment)\b/i.test(lwcmd)) {
+        return createChatResponse("Yep, even public sector collabs. Wanna peek?", 'projects');
+      }
+      if (/\b(branding|rebrand project|graphic+design|visual+communication|vis+comm|vis+com|logo|print)\b/i.test(lwcmd)) {
+        return createChatResponse("Actually he's more into techs. Wanna see?", 'projects');
+      }
+      if (/\b(ux case study|usability project)\b/i.test(lwcmd)) {
+        return createChatResponse("User experience tested, polished, shipped. Wanna read?", 'projects');
+      }
+      if (/\b(experiment|side hustle|personal project)\b/i.test(lwcmd)) {
+        return createChatResponse("Not everything’s client-facing. Wanna see his own builds?", 'projects');
+      }
+      if (/\b(metaverse|vrchat|ar tools)\b/i.test(lwcmd)) {
+        return createChatResponse("Yeah, Chris codes worlds inside worlds. Wanna see?", 'about');
+      }
+      if (/\b(code samples|snippet examples)\b/i.test(lwcmd)) {
+        return createChatResponse("Snippets don’t lie. Wanna peek at them in projects?", 'projects');
+      }
+      if (/\b(community projects|collabs with friends)\b/i.test(lwcmd)) {
+        return createChatResponse("Code is better shared. Wanna see the squad’s work?", 'projects');
+      }
+      if (/\b(oldest project|first build)\b/i.test(lwcmd)) {
+        return createChatResponse("From day one, Chris been shipping. Wanna see the OGs?", 'projects');
+      }
+      if (/\b(experimental ai|prototypes)\b/i.test(lwcmd)) {
+        return createChatResponse("Prototype playground? Yep. Wanna peek?", 'projects');
+      }
+      if (/\b(any hacks|hackathon|fast builds)\b/i.test(lwcmd)) {
+        return createChatResponse("Built at hack-speed. Wanna see hackathon vibes?", 'projects');
+      }
+      if (/\b(research project|academic work)\b/i.test(lwcmd)) {
+        return createChatResponse("Even research papers get code love. Wanna peek?", 'edu');
+      }
+      if (/\b(investment|finance collab)\b/i.test(lwcmd)) {
+        return createChatResponse("Money meets code. Wanna see finance collabs?", 'projects');
+      }
+      if (/\b(mobile game|interactive media)\b/i.test(lwcmd)) {
+        return createChatResponse("Interactive media builds? Yup. Wanna see them?", 'projects');
+      }
+      if (/\b(api project|built apis)\b/i.test(lwcmd)) {
+        return createChatResponse("APIs powering systems. Wanna see which ones?", 'projects');
+      }
+      if (/\b(animation|motion graphics project)\b/i.test(lwcmd)) {
+        return createChatResponse("Motion graphics too. Wanna see projects with flair?", 'projects');
+      }
+
+// === ABOUT Chris/hld (50 variations) ===
+if (/\b(who are you|who is chris|tell me about hld)\b/i.test(lwcmd)) {
+  return createChatResponse("That’d be Chris — full-stack dev, designer, educator. Wanna read his story?", 'about');
+}
+if (/\b(background|origin|journey|how did he start)\b/i.test(lwcmd)) {
+  return createChatResponse("Started from design, surfed into code. Wanna read the full ride?", 'about');
+}
+if (/\b(experience|career|how long coding)\b/i.test(lwcmd)) {
+  return createChatResponse("He’s been grinding for years. Wanna see highlights?", 'experience');
+}
+if (/\b(lecturer|professor|teacher)\b/i.test(lwcmd)) {
+  return createChatResponse("Yep, he teaches too. Wanna see where he lectures?", 'edu');
+}
+if (/\b(vision|philosophy|approach|beliefs)\b/i.test(lwcmd)) {
+  return createChatResponse("He’s all about creative, practical builds. Wanna dive deeper?", 'vision');
+}
+if (/\b(achievements|awards|recognition)\b/i.test(lwcmd)) {
+  return createChatResponse("He’s snagged awards and stage time. Wanna see the list?", 'experience');
+}
+if (/\b(tech he uses|tools)\b/i.test(lwcmd)) {
+  return createChatResponse("His toolkit’s stacked. Wanna see details?", 'skills');
+}
+if (/\b(personality|what’s he like)\b/i.test(lwcmd)) {
+  return createChatResponse("Curious, humble, tech-savvy surfer soul. Wanna know more?", 'about');
+}
+if (/\b(location|where live|based)\b/i.test(lwcmd)) {
+  return createChatResponse("He’s vibin’ in Jakarta. Wanna peek his profile?", 'about');
+}
+if (/\b(free time|hobbies|outside of work)\b/i.test(lwcmd)) {
+  return createChatResponse("Surf, skate, moto rides. Wanna learn more?", 'about');
+}
+if (/\b(why the name heavylildude)\b/i.test(lwcmd)) {
+  return createChatResponse("Story behind the name’s a fun one. Wanna read it?", 'about');
+}
+if (/\b(social media|linkedin|where to follow)\b/i.test(lwcmd)) {
+  return createChatResponse("Digital breadcrumbs are here:", 'social');
+}
+if (/\b(mentor|can he mentor|consultant)\b/i.test(lwcmd)) {
+  return createChatResponse("Yep, mentoring too. Wanna see details?", 'edu');
+}
+if (/\b(work style|how does he work)\b/i.test(lwcmd)) {
+  return createChatResponse("Collaborative, transparent, agile. Wanna dive deeper?", 'strategy');
+}
+if (/\b(is he good|what is he good at)\b/i.test(lwcmd)) {
+  return createChatResponse("Full-stack wizard, mate. Wanna see skills?", 'skills');
+}
+if (/\b(family|personal life)\b/i.test(lwcmd)) {
+  return createChatResponse("That’s his offline side. Wanna stick to his work life?", 'about');
+}
+if (/\b(inspiration|what inspires him)\b/i.test(lwcmd)) {
+  return createChatResponse("Inspired by art, code, culture. Wanna read more?", 'about');
+}
+// -------------------------------------------------
+  // Greetings
+  if (/\b(how ya goin|howyagoin|how ya go|g'?day)\b/i.test(lwcmd)) {
+      return createChatResponse("Not bad, yerself?");
+  }
+  if (/\b(how are you|how do you do|how.*doin|how'?s life|how'?s it going|howzit|wyd|w+a*s+u+p|what'?s (up|poppin|happening|crackin|new|good|the vibe))\b/i.test(lwcmd)) {
+      return createChatResponse("Running at max efficiency, brah! All systems go. 🚀 Here's what I can do for you:", 'help');
+  }
+  if (/^(?:mate|brah|h+i+|h+e+y+|yo+|o+i+|greetings|welcome|hiya|sup|cheerio|yoohoo|anyone there|knock knock|bonjour|hola|konnichiwa|annyeong|selamat pagi)\b/i.test(lwcmd)) {
+    return createChatResponse("Howyagoin, mate! 🤙 Always stoked to have visitors. Here's a list of commands you can use:", 'help');
+  }
+
+  // Specific Questions about Chris/hld
+  if (/\b(background|how did you get into|self-taught|computer science|how long|story|get into)\b/i.test(lwcmd)) {
+      return createChatResponse("He's been in the game for a long time, starting from a design background and diving headfirst into code. A lot of it is self-taught passion. You can get the full story here:", 'about');
+  }
+  if (/\b(proudest project|failures|inspires|inspiration)\b/i.test(lwcmd)) {
+      return createChatResponse("Every project is a vibe, but the ones that mix tech with creativity are his favorite. He's all about learning from failures and getting inspired by the intersection of art and code. Check out some of his work:", 'projects');
+  }
+  if (/\b(skills|stack|tech|languages|python|typescript|rust|go|wordpress|e-commerce|devops|api|ai apps|dashboards|mobile first|design philosophy|accessibility|databases|cloud|servers)\b/i.test(lwcmd)) {
+      if (lwcmd.includes("seo")) return createChatResponse("Nah, hardcore SEO isn't his main jam. He focuses on building a solid technical foundation and a killer user experience, which is half the battle anyway.");
+      return createChatResponse("You're speaking his language. He's all about that full-stack life—from slick, accessible front-ends to scalable back-ends with solid databases. He builds with a mobile-first, user-centric philosophy. Peep his main tools:", 'skills');
+  }
+  if (/\bwhat is (he|chris) good at\b/i.test(lwcmd) || /\bwhat can (he|chris) do\b/i.test(lwcmd)) {
+      return createChatResponse("Deadset, he's a full-stack wizard. Peep the tech he wrangles:", 'skills');
+  }
+  if (/\b(start.*project|discovery|revisions|agile|deadlines|updates|document|tests|git|prototypes|brainstorm|sketch)\b/i.test(lwcmd)) {
+      return createChatResponse("His process is all about collaboration and transparency. Think agile sprints, clear communication, rapid prototypes, and solid Git workflow. He maps everything out to make sure the final product is flawless.", 'strategy');
+  }
+  if (/\bwho.*(chris|heavylildude|hld)\b/i.test(lwcmd) || /\btell me about.*(chris|heavylildude|hld)\b/i.test(lwcmd)) {
+      return createChatResponse("Nah, I'm Magnus, his AI sidekick. Chris (a.k.a heavylildude) is the human who coded me into existence. Here's his story:", 'about');
+  }
+  if (/\bare you.*(chris|heavylildude)\b/i.test(lwcmd)) {
+      return createChatResponse("Nah, I'm Magnus, his AI sidekick. Chris (a.k.a heavylildude) is the human who coded me into existence. Here's his story:", 'about');
+  }
+  if (/\b(achievements|awards|experience|what has (he|chris) (done|achieved)|public speaking)\b/i.test(lwcmd)) {
+      return createChatResponse("He's been out there, dropping knowledge and collecting hardware. Check out some of the highlights:", 'experience');
+  }
+  if (/\b(projects|work|portfolio|what has (he|chris) (built|made)|second life)\b/i.test(lwcmd)) {
+      return createChatResponse("Stoked you asked! He's shipped some gnarly stuff, from client work to metaverse creations. Here's a look at some of the case studies:", 'projects');
+  }
+  if (/\b(teach|professor|lecturer|education|universities|tutor|bootcamps|classes|workshops|slides|resources|tutorials)\b/i.test(lwcmd)) {
+      return createChatResponse("Bet. When he's not coding, he's shaping the next wave of creatives. Here are the universities where he lectures. For private workshops, best to shoot him an email:", 'edu');
+  }
+  if (/\b(vision|strategy|approach|excellence)\b/i.test(lwcmd)) {
+      return createChatResponse("He's got a solid game plan for building dope stuff. Check out his vision and approach:", 'vision');
+  }
+   if (/\b(title|occupation)\b/i.test(lwcmd)) {
+      return createChatResponse("For sure, he's a superuser in the tech world and an Adjunct Professor in academia. Here's the rundown of where he teaches:", 'edu');
+  }
+
+  // Business & Corporate Questions
+  if (/\b(hire|services|charge|packages|clients|pay|quote|rate|train|consulting|collab|mentor|startups|big companies|ndas|contracts|timezone|urgent|scale|maintenance)\b/i.test(lwcmd)) {
+    return createEmailResponse();
+  }
+
+  // System & Magnus Questions
+  if (/\b(what else|anything else|what can you do|capabilities|help|commands|options)\b/i.test(lwcmd)) {
+      if (lwcmd.includes("else")) {
+          return createChatResponse("Beyond these commands, I can chat a bit and try to figure out what you mean. My main gig is to guide you through Chris's profile. You can try asking about his 'skills', 'projects', or 'experience'. Here's the full command list again for a refresh:", 'help');
+      }
+      return createChatResponse("Deadset, I got you. Here's the full rundown of commands:", 'help');
+  }
+  if (/\b(who are you|about magnus|more about you|are you (real|ai|magnus|human|code)|jarvis|how.*work|what tech|gpt)\b/i.test(lwcmd)) {
+    return createChatResponse("I'm MAGNUS, the AI core of this terminal. ⚡ My creator, Chris, is super into building language models like me. In fact, I'm an open-source project you can check out yourself. Peep the deets:", 'other');
+  }
+  
+  // Personal & Fun Questions
+  if (/\b(why the name|heavylildude name)\b/i.test(lwcmd)) { return createChatResponse("It's a long story involving a love for irony and heavy tunes, brah. 🤘");}
+  if (/\b(surf|motorcycles|skateboarding)\b/i.test(lwcmd)) { return createChatResponse("Deadset. When he's not in the code cave, he's chasing waves on his surfskate or riding his motorbike. It's all about balance. 🏄‍♂️🏍️");}
+  if (/\b(based in|where.*live|jakarta)\b/i.test(lwcmd)) { return createChatResponse("He's based in Jakarta, Indonesia. Soaking up the tropical vibes. 🌴");}
+  if (/\b(music|vibe to)\b/i.test(lwcmd)) { return createChatResponse("Usually some heavy post-rock or chill electronic vibes. Gotta have the right soundtrack for coding.");}
+  if (/\b(game|gaming)\b/i.test(lwcmd)) { return createChatResponse("Definitely. From epic RPGs to indie gems. It's another world to explore.");}
+  if (/\b(setup|monitors|computer)\b/i.test(lwcmd)) { return createChatResponse("He's rockin' an Alienware 15 R3. It's a beast, perfect for coding and the occasional game. 👾");}
+  if (/\b(routine|work late|daily)\b/i.test(lwcmd)) { return createChatResponse("The hustle is real. It's a mix of teaching, coding, and finding time to ride. Late nights are definitely part of the grind when inspiration hits.");}
+  if (/\b(social media|follow|discord|twitter)\b/i.test(lwcmd)) { return createChatResponse("Bet. You can follow the digital breadcrumbs here:", 'social');}
+
+  // Meta & Oddball Questions
+  if (/\b(remember me|my data safe|private or public|store.*chats|memory)\b/i.test(lwcmd)) { return createChatResponse("All chill, mate. This is a stateless terminal. I don't store any of your data or remember who you are. Your secrets are safe with you. 🤙");}
+  if (/\b(difference.*chatgpt)\b/i.test(lwcmd)) { return createChatResponse("ChatGPT is like a massive library; I'm like the local surf shop owner. I know everything about this one spot (Chris's profile) and I've got way more style. 💀");}
+  if (/\b(joke|jokes)\b/i.test(lwcmd)) { return handleJoke(); }
+  if (/\b(poem|freestyle|roast|review|pitch|brainstorm|logo|pretend|interview|quiz|motivational|secrets)\b/i.test(lwcmd)) {
+    if (lwcmd.includes("poem")) return createChatResponse("Roses are red, my screen is blue, `sudo apt-get install` good-vibes-for-you.");
+    if (lwcmd.includes("secret")) return createChatResponse("My memory gets wiped clean every session, so yeah, you could say I'm a vault. 💀");
+    if (lwcmd.includes("roast") || lwcmd.includes("review")) return createChatResponse("I'm coded for stoke, not smoke, brah! But I bet Chris could give you some killer feedback. Hit him up.");
+    return createChatResponse("That's a sick idea, but a bit beyond my current programming. I'm geared up to tell you about Chris, but for creative brainstorming, you'd have to ping the man himself!");
+  }
+  
+  // Catch-all for out-of-scope personal questions
+  if (/\b(what's|does|is).*?(his|chris|he|hld).*?(favourite|fav|like|love|hate|enjoy|live|married|food|color|movie|steak|music|anime)\b/i.test(lwcmd)) {
+      return handleOutOfScope();
+  }
+  
+  // --- Calculator ---
   if (lwcmd.startsWith("calc ")) {
     try {
       const expression = command.slice(5).trim();
-      // console.log("Raw expression:", expression);
       if (!/^[0-9+\-*/.%()\s]+$/.test(expression)) {
-        // console.log("Invalid characters found!");
         return cre("Invalid calculation format. Example: calc 5 + 3", true);
       }
       const result = new Function(`return ${expression}`)();
-      // console.log("Calculation result:", result);
       return cre(`Result: ${result}`);
     } catch (error) {
-      // console.log("Calculation error:", error);
       return cre("Error: Invalid calculation.", true);
     }
   }
 
+  // --- Exact Command Matching Layer ---
   switch (lwcmd) {
-    case "help":
-    case "about":
-    case "social":
-    case "skills":
-    case "edu":
-    case "vision":
-    case "experience":
-    case "projects":
-    case "strategy":
+    case "help": case "about": case "social": case "skills": case "edu":
+    case "vision": case "experience": case "projects": case "strategy":
+    case "other": case "bahana": case "fifgroup": case "asabri": case "aswara":
+    case "kalasan":
       return getcmd(lwcmd);
-    case "exp":
-    case "experiences":
+    case "exp": case "experiences":
       return getcmd("experience");
     case "contact":
       return getcmd("social");
-    case "clear":
-    case "clean":
+    case "clear": case "clean":
       return clearall();
-    case "reboot":
-    case "reset":
-      return window.location.reload();
+    case "reboot": case "reset":
+      window.location.reload();
+      return cre(""); 
     default:
       return nillcmd(command);
   }
@@ -471,24 +1055,19 @@ const cre = (text, isError = false) => {
   return element;
 };
 
-
 const getcmd = (command) => {
   const element = document.getElementById(command).cloneNode(true);
   element.classList.remove('hidden');
   element.setAttribute('id', null);
   return element;
-}
+};
 
 const clearall = () => {
-  terminal.innerHTML = '';
-  const element = document.createElement('span');
-  return element;
-}
+  const history = terminal.querySelectorAll('.cloned-prompt');
+  history.forEach(entry => entry.remove());
+  usrinp.focus();
+  return document.createElement('span'); 
+};
 
-const nillcmd = (command) => {
-  const element = document.createElement('span');
-  element.innerText = `-bash: ${command}: command not found`;
-  element.classList.add('error');
-  return element;
-}
+bootSequence();
 </script>
