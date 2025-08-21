@@ -626,7 +626,7 @@ const slctcmd = (command) => {
   if (/\b(how are you|how do you do|how.*doin|how'?s life|how'?s it going|howzit|wyd|w+a*s+u+p|what'?s (up|poppin|happening|crackin|new|good|the vibe))\b/i.test(lwcmd)) {
       return createChatResponse("Running at max efficiency, brah! All systems go. 🚀 Here's what I can do for you:", 'help');
   }
-  if (/^(?:mate|brah|h+i+|h+e+y+|yo+|o+i+|greetings|welcome|hiya|sup|cheerio|yoohoo|anyone there|knock knock|bonjour|hola|konnichiwa|annyeong|selamat pagi)\b/i.test(lwcmd)) {
+  if (/^(?:hi|hello|halo|hey|hello|helo|mate|brah|h+i+|h+e+y+|yo+|o+i+|greetings|welcome|hiya|sup|cheerio|yoohoo|anyone there|knock knock|bonjour|hola|konnichiwa|annyeong|selamat+)\b/i.test(lwcmd)) {
     return createChatResponse("Howyagoin, mate! 🤙 Always stoked to have visitors. Here's a list of commands you can use:", 'help');
   }
 if (/\b(who+is+chris|tell+me+about)\b/i.test(lwcmd)) {
