@@ -683,7 +683,13 @@ if (/\b(lecturer|professor|teacher)\b/i.test(lwcmd)) {
 if (/\b(who+are|tell+me+about|show+me|tell+about|tell|who+is|who|show).*?(your|his|chris's)? client|clients|case stud(y|ies)|portfolio|work\b/i.test(lwcmd)) {
     return createChatResponse("Stoked you asked! Here’s a look at some client work and case studies:", 'projects');
 }
-
+// 3rd-person: asking about Chris/HLD pricing
+if (/\b(?:what(?:'|’)?s|what\s+is|how\s+much|his|chris|hld|heavylildude)\b.*\b(?:price|pricing|rate|cost|fee|charge|worth|budget|expensive|project\s+cost|costs?)\b/i.test(lwcmd)) {
+  return createChatResponse(
+    "Wanna know Chris’s rates? Best move is to reach out directly — drop a line and let’s chat it through 👉",
+    'contact'
+  );
+}
   // Business & Corporate Questions
   if (/\b(hire|services|charge|packages|pay|quote|rate|train|consulting|collab|mentor|startups|big companies|ndas|contracts|timezone|urgent|scale|maintenance)\b/i.test(lwcmd)) {
     return createEmailResponse();
