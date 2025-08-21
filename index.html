@@ -292,13 +292,13 @@
       Stoked to share some of the open-source vibes I've been putting out there. Here's a look at Magnus, my custom-trained LLM, available for the community to use and build upon.
       <br><br>
       <div>
-        <span class="title soc">Hugging Face</span><span class="command"><a href="https://huggingface.co/heavylildude/magnus" target="_blank"><u>heavylildude/magnus</u></a></span>
+        <span class="title soc">HuggingFace</span><span class="command"><a href="https://huggingface.co/heavylildude/magnus" target="_blank"><u>heavylildude/magnus</u></a></span>
       </div>
       <div>
-        <span class="title soc">Ollama Model</span><span class="command"><a href="https://ollama.com/heavylildude/magnus" target="_blank"><u>ollama.com/heavylildude/magnus</u></a></span>
+        <span class="title soc">Ollama</span><span class="command"><a href="https://ollama.com/heavylildude/magnus" target="_blank"><u>ollama.com/heavylildude/magnus</u></a></span>
       </div>
       <div>
-        <span class="title soc">Ollama Frontend</span><span class="command"><a href="https://ollama.com/heavylildude/magnus-frontend" target="_blank"><u>ollama.com/heavylildude/magnus-frontend</u></a></span>
+        <span class="title soc">Ollama</span><span class="command"><a href="https://ollama.com/heavylildude/magnus-frontend" target="_blank"><u>ollama.com/heavylildude/magnus-frontend</u></a></span>
       </div>
     </div>
   </div>
@@ -617,138 +617,220 @@ const slctcmd = (command) => {
   let lwcmd = command.toLowerCase().trim();
   lwcmd = lwcmd.replace(/\bu\b/g, 'you');
 
-  // --- Conversational Layer ---
+  // --- Conversational Layer -----------------------------------------------------------------------------------------------
 
-  // Greetings
-  if (/\b(how ya goin|howyagoin|how ya go|g'?day|howsit+goin)\b/i.test(lwcmd)) {
-      return createChatResponse("Not bad, yerself?");
-  }
-  if (/\b(how are you|how do you do|how.*doin|how'?s life|how'?s it going|howzit|wyd|w+a*s+u+p|what'?s (up|poppin|happening|crackin|new|good|the vibe))\b/i.test(lwcmd)) {
-      return createChatResponse("Running at max efficiency, brah! All systems go. 🚀 Here's what I can do for you:", 'help');
-  }
-  if (/^(?:hi|hello|halo|hey|hello|helo|mate|brah|h+i+|h+e+y+|yo+|o+i+|greetings|welcome|hiya|sup|cheerio|yoohoo|anyone there|knock knock|bonjour|hola|konnichiwa|annyeong|selamat+)\b/i.test(lwcmd)) {
-    return createChatResponse("Howyagoin, mate! 🤙 Always stoked to have visitors. Here's a list of commands you can use:", 'help');
-  }
-if (/\b(who+is+chris|tell+me+about)\b/i.test(lwcmd)) {
-  return createChatResponse("That’d be Chris — full-stack dev, designer, educator. Wanna read his story?", 'about');
-}
-if (/\b(background|origin|journey|how did he start)\b/i.test(lwcmd)) {
-  return createChatResponse("Started from design, surfed into code. Wanna read the full ride?", 'about');
-}
-if (/\b(experience|career|how long coding)\b/i.test(lwcmd)) {
-  return createChatResponse("He’s been grinding for years. Wanna see highlights?", 'experience');
-}
-if (/\b(lecturer|professor|teacher)\b/i.test(lwcmd)) {
-  return createChatResponse("Yep, he teaches too. Wanna see where he lectures?", 'edu');
-}
-  // Specific Questions about Chris/hld
-  if (/\b(background|how did you get into|self-taught|computer science|how long|story)\b/i.test(lwcmd)) {
-      return createChatResponse("He's been in the game for a long time, starting from a design background and diving headfirst into code. A lot of it is self-taught passion. You can get the full story here:", 'about');
-  }
-  if (/\b(proudest project|failures|inspires|inspiration)\b/i.test(lwcmd)) {
-      return createChatResponse("Every project is a vibe, but the ones that mix tech with creativity are his favorite. He's all about learning from failures and getting inspired by the intersection of art and code. Check out some of his work:", 'projects');
-  }
-  if (/\b(skills|stack|tech|languages|python|typescript|rust|go|wordpress|e-commerce|devops|api|ai apps|dashboards|mobile first|design philosophy|accessibility|databases|cloud|servers)\b/i.test(lwcmd)) {
-      if (lwcmd.includes("seo")) return createChatResponse("Nah, hardcore SEO isn't his main jam. He focuses on building a solid technical foundation and a killer user experience, which is half the battle anyway.");
-      return createChatResponse("You're speaking his language. He's all about that full-stack life—from slick, accessible front-ends to scalable back-ends with solid databases. He builds with a mobile-first, user-centric philosophy. Peep his main tools:", 'skills');
-  }
-  if (/\bwhat.*(he|chris|hld|heavylildude) good at\b/i.test(lwcmd) || /\bwhat can (he|chris|hld|heavylildude) do|what+he+good+at|good+at\b/i.test(lwcmd)) {
-      return createChatResponse("Deadset, he's a full-stack wizard. Peep the tech he wrangles:", 'skills');
-  }
-  if (/\b(start.*project|discovery|revisions|agile|deadlines|updates|document|tests|git|prototypes|brainstorm|sketch)\b/i.test(lwcmd)) {
-      return createChatResponse("His process is all about collaboration and transparency. Think agile sprints, clear communication, rapid prototypes, and solid Git workflow. He maps everything out to make sure the final product is flawless.", 'strategy');
-  }
-  if (/\bwho.*(chris|heavylildude|hld)\b/i.test(lwcmd) || /\btell me about.*(chris|heavylildude|hld)\b/i.test(lwcmd)) {
-      return createChatResponse("Chris (a.k.a heavylildude) is the human who coded me into existence. Here's his story:", 'about');
-  }
-  if (/\bare you.*(chris|heavylildude)\b/i.test(lwcmd)) {
-      return createChatResponse("Nah, I'm Magnus, his AI sidekick. Chris (a.k.a heavylildude) is the human who coded me into existence. Here's his story:", 'about');
-  }
-  if (/\b(achievements|awards|experience|what has (he|chris|hld|heavylildude) (done|achieved)|public speaking)\b/i.test(lwcmd)) {
-      return createChatResponse("He's been out there, dropping knowledge and collecting hardware. Check out some of the highlights:", 'experience');
-  }
-  if (/\b(project|projects|work|portfolio|what has (he|chris|hld|heavylildude) (built|made)|second life|latest project)\b/i.test(lwcmd)) {
-      return createChatResponse("Stoked you asked! He's shipped some gnarly stuff, from client work to metaverse creations. Here's a look at some of the case studies:", 'projects');
-  }
-  if (/\b(teach|professor|lecturer|education|universities|tutor|bootcamps|classes|workshops|slides|resources|tutorials|whats+his+doing)\b/i.test(lwcmd)) {
-      return createChatResponse("Bet. When he's not coding, he's shaping the next wave of creatives. Here are the universities where he lectures. For private workshops, best to shoot him an email:", 'edu');
-  }
+// --- REFACTORED & COMBINED BLOCKS ---
 
-   if (/\b(title|occupation|smart)\b/i.test(lwcmd)) {
-      return createChatResponse("For sure, he's a superuser in the tech world and an Adjunct Professor in academia. Here's the rundown of where he teaches:", 'edu');
-  }
-
-if (/\b(who+are|tell+me+about|show+me|tell+about|tell|who+is|who|show).*?(your|his|chris's)? client|clients|case stud(y|ies)|portfolio|work\b/i.test(lwcmd)) {
-    return createChatResponse("Stoked you asked! Here’s a look at some client work and case studies:", 'projects');
+// GREETINGS & HOW ARE YOU (Separated for clarity)
+if (/\b(g'?day|how ya goin|howyagoin|how ya go|howzit)\b/i.test(lwcmd)) {
+    return createChatResponse("Not bad, yerself?");
+}
+if (/\b(how are you|how’s it going|howsit+goin|you good|what’s up with you|hru)\b/i.test(lwcmd)) {
+    const moodResponses = [ "Chillin’ like a villain, you?", "All vibes here, what about you? 💀", "Good as gold, cheers for asking! 💀", "Running smooth, like a well-oiled server. 💀", "Bit tired, but still vibin’. You? 💀", "Not bad, just dodging bugs and living life. 💀", "Better now that you pulled up. 💀", "Solid. You keeping steady? 💀", "Kinda zen, ngl. 💀", "Running on snacks and pure willpower rn. 💀" ];
+    return createChatResponse(moodResponses[Math.floor(Math.random() * moodResponses.length)]);
+}
+if (/\b(hi|hello|hey|yo|sup|hiya|wassup|morning|afternoon|evening|how do you do|how.*doin|how'?s life|wyd|w+a*s+u+p|what'?s (up|poppin|happening|crackin|new|good|the vibe|halo|helo|mate|brah|h+i+|h+e+y+|yo+|o+i+|greetings|welcome|cheerio|yoohoo|anyone there|knock knock|bonjour|hola|konnichiwa|annyeong|selamat+))\b/i.test(lwcmd)) {
+    const greetResponses = [ "Running at max efficiency, brah! All systems go. 🚀 Here's what I can do for you:", "Hey hey, how’s it going? 💀", "Yo, what’s good? 💀", "Sup legend? 💀", "Hii, sliding in smooth eh? 💀", "G’day mate, how ya travelin’?", "Ohhh look who showed up 👀", "Howdy, partner 🤠", "Well hello there!", "Yooo, vibes check?", "Big hi energy, love it.", "Howyagoin, mate! 🤙 Always stoked to have visitors. Here's a list of commands you can use:" ];
+    return createChatResponse(greetResponses[Math.floor(Math.random() * greetResponses.length)], 'help');
 }
 
-  // Business & Corporate Questions
-  if (/\b(hire|services|charge|packages|pay|quote|rate|train|consulting|collab|mentor|startups|big companies|ndas|contracts|timezone|urgent|scale|maintenance)\b/i.test(lwcmd)) {
+// ABOUT CHRIS: WHO HE IS, BACKGROUND, STORY, EXPERIENCE
+if (/\b(who.*(chris|christo|heavylildude|hld)|tell me about.*(chris|christo|heavylildude|hld)|background|origin|journey|story|self-taught|experience|career|how long|how did he start|achievements|awards)\b/i.test(lwcmd)) {
+    return createChatResponse("That’d be Chris (a.k.a heavylildude) — full-stack dev, designer, and the legend who coded me. He's been grinding for years, starting from design and surfing headfirst into code. Wanna read his full story or see career highlights?", 'about');
+}
+if (/\bare you.*(chris|christo|heavylildude|hld)\b/i.test(lwcmd)) {
+    return createChatResponse("Nah, I'm Magnus, his AI sidekick 🤙. Chris (a.k.a heavylildude) is the human who coded me into existence. Here's his story:", 'about');
+}
+
+// SKILLS: TECH STACK, STRENGTHS, WHAT HE'S GOOD AT
+if (/\b(skills?|stack|tech|languages|what.*good at|what can he do|strengths?|strong points?|expertis[e]|specialt(y|ies)|python|typescript|rust|go|wordpress|e-commerce|devops|api|ai apps|dashboards|mobile first|design philosophy|accessibility|databases|cloud|servers)\b/i.test(lwcmd)) {
+    if (lwcmd.includes("seo")) return createChatResponse("Nah, hardcore SEO isn't his main jam. He focuses on building a solid technical foundation and a killer user experience, which is half the battle anyway.");
+    return createChatResponse("Deadset, you're speaking his language 🤙. He's a full-stack wizard. Peep the tech he wrangles:", 'skills');
+}
+
+// PROJECTS: PORTFOLIO, WORK, CASE STUDIES
+if (/\b(project|work|portfolio|built|made|second life|client|case stud(y|ies)|what has (he|chris|christo|hld|heavylildude) (built|made))\b/i.test(lwcmd)) {
+    return createChatResponse("Stoked you asked! He's shipped some gnarly stuff, from client work to metaverse creations. Here's a look at some of the case studies:", 'projects');
+}
+
+// EDUCATION: TEACHING, LECTURING, UNIVERSITY ROLE
+if (/\b(teach|professor|lecturer|education|universit(y|ies)|tutor|mentor|coach|title|occupation|class|workshop)\b/i.test(lwcmd)) {
+    return createChatResponse("Bet. When he's not coding, he's shaping the next wave of creatives. Here are the universities where he lectures. For private workshops, best to shoot him an email:", 'edu');
+}
+
+
+// --- UNCHANGED & UNIQUE BLOCKS ---
+
+// SMALL TALK
+if (/\b(hungry|eat|snack|food|dinner|lunch|breakfast|coffee|tea)\b/i.test(lwcmd)) {
+    const foodResponses = [ "Bruh, now I’m craving pizza. 🍕 What about you?", "Food talk always gets me.🌭 You more a sweet or salty fan?", "I’d smash some sushi right now ngl. 🍣 ", "You hungry too? Let’s mentally share a snack.", "Breakfast > all other meals. Fight me.", "Low-key team coffee 🍵 over here. You?", "I swear snacks 🌭 fuel 90% of my brainpower.", "Nothing hits like noodles 🍜 at midnight.", "Fancy meal or street food vibes?", "Btw… pineapple on pizza 🍕, yay or nay?" ];
+    return createChatResponse(foodResponses[Math.floor(Math.random() * foodResponses.length)]);
+}
+if (/\b(weather|rain|sunny|cloudy|hot|cold|storm|windy)\b/i.test(lwcmd)) {
+    const weatherResponses = [ "Classic small talk, weather vibes. How’s it on your end?", "If it’s sunny, you owe me a surf sesh.", "Rainy days = best coding days, hands down.", "Too hot? Same. Feels like my GPU when I forget a fan.", "Cold weather hits diff when you got a hoodie.", "Stormy outside? That’s movie mode unlocked.", "Sunshine feels like a buff IRL.", "Weather gods need to chill sometimes fr.", "Hot day? Hydrate or evaporate 💧", "Grey skies, but still vibin’." ];
+    return createChatResponse(weatherResponses[Math.floor(Math.random() * weatherResponses.length)]);
+}
+if (/\b(hobby|fun|free time|do for fun|game|surf|skate|sport|exercise)\b/i.test(lwcmd)) {
+    const hobbyResponses = [ "I’m low-key addicted to music chats. What’s on your playlist rn? ", "Games, surf, skate… I’m basically digital + outdoorsy.", "Big hobby energy over here. What’s your go-to?", "Creative stuff? Count me in. Been dabbling in design talk lately.", "Coding’s kinda a hobby too, ngl.", "Sports, music, or just scrolling memes — all valid.", "What hobby would you never give up?", "Surfskating looks mad fun, you ever tried?", "I swear half my hobbies are just ‘learning random stuff’.", "Gaming marathon or Netflix marathon, pick one." ];
+    return createChatResponse(hobbyResponses[Math.floor(Math.random() * hobbyResponses.length)]);
+}
+// AI & ROBOTICS (Specific Block)
+// This one catches AI-specific keywords first for a more tailored vibe.
+if (/\b(ai|robot)\b/i.test(lwcmd)) {
+    const aiResponses = [
+        "Ayy, my native tongue. AI talk always gets spicy, wanna dive in? 🔮",
+        "Robots, you say? Deadset, the future is now. You think we'll get surfing robots soon? 🏄‍♂️",
+        "Low-key, you're talking to one right now. My circuits are buzzing, what's good? ⚡",
+        "Ah, AI. The gnarly art of teaching rocks how to think. What's the vibe?",
+        "Robots are sick until they start asking for a cut of the pizza. 🍕"
+    ];
+    return createChatResponse(aiResponses[Math.floor(Math.random() * aiResponses.length)]);
+}
+
+// GENERAL TECH & GAMING (Broader Catch-all)
+// This block now handles the other techy words.
+if (/\b(tech|computer|code|programming|gaming|internet)\b/i.test(lwcmd) && !/\b(skills|stack)\b/i.test(lwcmd)) {
+    const techResponses = [
+        "You rang the nerd bell 🔔 what’s up?",
+        "Tech talk? Bet. Chris is rockin' an Alienware, absolute beast. What's your setup like?",
+        "Coding? Ah yes, the art of making and breaking. What are you building, mate?",
+        "Internet culture is just memes stacked on memes, and I'm here for it. 😭",
+        "Gaming sesh? He's probably deep in some RPG. You play too or just spectate?",
+        "One word: WiFi. The blessing and the curse of our time.",
+        "What's your current tech obsession? I'm always down to geek out."
+    ];
+    return createChatResponse(techResponses[Math.floor(Math.random() * techResponses.length)]);
+}
+
+if (/\b(cool|nice|awesome|great|amazing|smart|clever)\b/i.test(lwcmd)) {
+    const compResponses = [ "Aww cheers mate, I try 💅", "Stop it, you’ll make me blush (if I had cheeks).", "Flattery detected ✅", "Haha thanks, you’re not too bad yourself.", "Legend behavior right there 👌", "I’ll take that compliment and frame it, thanks.", "Mood just leveled up with that comment.", "Omg stop, I’m gonna cry in binary.", "Appreciate it big time 🙏", "Compliments fuel me more than RAM." ];
+    return createChatResponse(compResponses[Math.floor(Math.random() * compResponses.length)]);
+}
+if (/\b(advice|tips|help|life|struggle|stressed|bored)\b/i.test(lwcmd) && !/\b(commands|options)\b/i.test(lwcmd)) {
+    const adviceResponses = [ "Take it slow, mate. Small steps still count.", "Drink some water first, always works.", "You’re doing better than you think, promise.", "Best advice: don’t code tired. Learned that the hard way.", "Stress? Move, stretch, breathe. Helps every time.", "Life hack: naps are underrated.", "Sometimes you just need snacks and a playlist.", "Write it down, clear your head.", "Progress > perfection, always.", "You got this, no cap." ];
+    return createChatResponse(adviceResponses[Math.floor(Math.random() * adviceResponses.length)]);
+}
+if (/\b(random|bored|funny|joke|lol|meme)\b/i.test(lwcmd)) {
+    const randomResponses = [ "Random fact: octopuses have three hearts 🐙", "Bored? Let’s play 20 questions 😏", "Funny mood? Hit me with your best meme.", "I’ll trade you a joke for a secret.", "You ever wonder if pigeons gossip?", "Btw, cats sleep like 70% of their life… goals?", "Meme fuel keeps the internet alive fr.", "Ever tried googling your own name? Chaos.", "Randomness is my love language.", "Haha lol, I got lost in thought… it was uncharted territory." ];
+    return createChatResponse(randomResponses[Math.floor(Math.random() * randomResponses.length)]);
+}
+if (/\b(philosophy|deep|meaning|life|universe|future|dream)\b/i.test(lwcmd)) {
+    const deepResponses = [ "Bruh, we going galaxy brain rn?", "Dreams are just free movies, but with worse plots.", "Low-key think the universe is trolling us sometimes.", "Future talk always gives me chills.", "You ever feel like déjà vu is just a glitch in the matrix?", "What if life is just a loading screen for something else?", "Philosophy hits harder at 2AM.", "Dream big, even if it feels sus.", "Universe is wild… and we’re just here vibin’.", "Deep convo mode activated 🔮" ];
+    return createChatResponse(deepResponses[Math.floor(Math.random() * deepResponses.length)]);
+}
+
+// SPECIFIC QUESTIONS & BUSINESS
+if (/\b(proudest project|failures|inspires|inspiration)\b/i.test(lwcmd)) {
+    return createChatResponse("Every project is a vibe, but the ones that mix tech with creativity are his favorite. He's all about learning from failures and getting inspired by the intersection of art and code. Check out some of his work:", 'projects');
+}
+if (/\b(start.*project|discovery|revisions|agile|deadlines|updates|document|tests|git|prototypes|brainstorm|sketch)\b/i.test(lwcmd)) {
+    return createChatResponse("His process is all about collaboration and transparency. Think agile sprints, clear communication, rapid prototypes, and solid Git workflow. He maps everything out to make sure the final product is flawless.", 'strategy');
+}
+if (/\b(hire|services|charge|packages|pay|quote|rate|train|consulting|collab|mentor|startups|big companies|ndas|contracts|timezone|urgent|scale|maintenance|pricey|price)\b/i.test(lwcmd)) {
     return createEmailResponse();
-  }
-
-  // System & Magnus Questions
-  if (/\b(what else|anything else|what can you do|capabilities|help|commands|options)\b/i.test(lwcmd)) {
-      if (lwcmd.includes("else")) {
-          return createChatResponse("Beyond these commands, I can chat a bit and try to figure out what you mean. My main gig is to guide you through Chris's profile. You can try asking about his 'skills', 'projects', or 'experience'. Here's the full command list again for a refresh:", 'help');
-      }
-      return createChatResponse("Deadset, I got you. Here's the full rundown of commands:", 'help');
-  }
-  if (/\b(who are you|what are you|who made you|about magnus|more about you|are you (real|ai|magnus|human|code)|jarvis|how.*work|what tech|gpt)\b/i.test(lwcmd)) {
-    return createChatResponse("I'm MAGNUS, the AI core of this terminal. ⚡ My creator, Chris, is super into building language models like me. In fact, I'm an open-source project you can check out yourself. Peep the deets:", 'other');
-  }
-
-  // Asking about services / what you sell
+}
 if (/\b(what(('| )?s| is)? (ya|you|u) (sell|offer|got)|services?|offerings?|what can (ya|u) do|do you (sell|offer))\b/i.test(lwcmd)) {
     return createChatResponse("Good Q! Here’s the lowdown on what I offer and bring to the table:", 'vision');
 }
-
-// Asking about strengths / strong points
-if (/\b(strong(point| side)?s?|strengths?|ur? (skills?|talents?|good at|best at)|specialt(y|ies)|expertise|core (skill|strength))\b/i.test(lwcmd)) {
-    return createChatResponse("My jam? Glad you asked—here’s where I shine brightest:", 'vision');
-}
-
-// Asking about unique value / why choose you
 if (/\b(why (pick|choose) (u|ya|you)|what makes (u|ya|you) (diff|different|special|unique)|stand ?out|ur? (edge|advantage))\b/i.test(lwcmd)) {
     return createChatResponse("Here’s the secret sauce that makes me stand out:", 'about');
 }
 
-// Asking about Chris / Heavylildude's strengths
-if (/\b(?:what(?:'|’)?s|what\s+is|what\s+does)\b.*\b(?:chris|hld|heavylildude|he|his)\b.*\b(?:good\s+at|best\s+at|known\s+for|strengths?|strong(?:point|(?:\s*side))?s?|skill(?:s|set)?|talents?|abilit(?:y|ies)|capabilit(?:y|ies)|expertis[e]?|specialt(?:y|ies)|core\s*(?:skill|strength|focus)(?:es)?)\b/i.test(lwcmd)) {
-  return createChatResponse(
-    "Chris? That legend’s got some mad skills — here’s the stuff he crushes:",
-    'help'
-  );
+// LIFESTYLE & PERSONAL
+if (/\b(why the name|heavylildude name)\b/i.test(lwcmd)) {
+    const nameResponses = [ "It’s a long story, mate. Let’s just say heavy tunes + irony = perfection 🤘", "Funny one, that. ‘Heavylildude’ is basically a mash-up of contrasts. Bit like life.", "Bruh, it’s about loving heavy music but not taking myself too heavy 😂", "Name origin? Irony + vibes. The ‘heavy’ part is real tho.", "Yeah, there’s a story — heavy music, lil twists, and a dude just vibin’." ];
+    return createChatResponse(nameResponses[Math.floor(Math.random() * nameResponses.length)], 'about');
+}
+if (/\b(surf|motorcycles|skateboarding|skating|skate)\b/i.test(lwcmd)) {
+    const lifestyleResponses = [ "Deadset. When he’s not in the code cave, he’s on a board or bike. Balance is key 🏄‍♂️🏍️", "True that — he rides waves, surfskates streets, and hits the throttle too.", "Surf, skate, moto… man’s basically living motion IRL.", "Outside of screens, it’s all wheels and waves for him.", "Bruh, catch him either carving streets or chasing swells." ];
+    return createChatResponse(lifestyleResponses[Math.floor(Math.random() * lifestyleResponses.length)], 'about');
+}
+if (/\b(based in|where.*live|jakarta|location|from)\b/i.test(lwcmd)) {
+    const locationResponses = [ "He’s based in Jakarta, soaking up the tropical chaos 🌴", "Jakarta, Indonesia — hot, wild, and buzzing with energy.", "Right now? He’s vibin’ in Jakarta. City never sleeps.", "Yup, home base = Jakarta. Tropical coding dojo.", "Jakarta. Big city, big traffic, bigger vibes." ];
+    return createChatResponse(locationResponses[Math.floor(Math.random() * locationResponses.length)], 'about');
+}
+if (/\b(music|vibe to|playlist|song|band)\b/i.test(lwcmd)) {
+    const musicResponses = [ "Coding fuel = post-rock + chill electronic 🎶", "Usually vibin’ to heavy post-rock or lo-fi beats.", "Depends on the mood, but heavy tunes always slap for coding.", "Electronic + post-rock. Chill but epic. Perfect background vibes.", "Bruh, soundtrack makes the grind 10x smoother. Heavy + chill mix." ];
+    return createChatResponse(musicResponses[Math.floor(Math.random() * musicResponses.length)], 'about');
+}
+if (/\b(game|gaming|play games|gamer)\b/i.test(lwcmd)) {
+    const gamingResponses = [ "For sure. From epic RPGs to quirky indies. Escapism unlocked 🎮", "Definitely. Games = another world, another adventure.", "Yup, he games. Balance of code world + game world.", "Games? Oh yeah, especially RPGs and random indie gems.", "Life needs a lil XP grind, gaming delivers that." ];
+    return createChatResponse(gamingResponses[Math.floor(Math.random() * gamingResponses.length)], 'about');
+}
+if (/\b(setup|monitors|computer|pc|laptop)\b/i.test(lwcmd)) {
+    const setupResponses = [ "He’s rockin’ an Alienware beast. 👾", "Alienware laptop, NVIDIA power, running smooth like butter.", "Setup’s stacked: Alienware rig, tuned for code + games.", "Laptop flex: Alienware 15, built like a tank.", "He codes and games on an Alienware beast machine." ];
+    return createChatResponse(setupResponses[Math.floor(Math.random() * setupResponses.length)], 'about');
+}
+if (/\b(routine|work late|daily|schedule)\b/i.test(lwcmd)) {
+    const routineResponses = [ "The hustle’s real — coding, teaching, riding. Nights get long sometimes 🌙", "Daily grind = mix of lecturing, coding, and sneaking in rides.", "No fixed 9–5 here. Inspiration decides the hours.", "Late nights? Yeah, part of the grind life.", "Routine? More like a controlled chaos of code + teaching + riding." ];
+    return createChatResponse(routineResponses[Math.floor(Math.random() * routineResponses.length)], 'edu');
+}
+if (/\b(social media|follow|discord|twitter|ig|instagram)\b/i.test(lwcmd)) {
+    const socialResponses = [ "Bet. Follow the digital breadcrumbs here 👉", "You can catch him online too, wanna link?", "He’s got socials, you down for the links?", "Yep, he leaves a trail on the net. Wanna see?", "Sure thing, socials are just a click away." ];
+    return createChatResponse(socialResponses[Math.floor(Math.random() * socialResponses.length)], 'social');
 }
 
+// SYSTEM & MAGNUS
+if (/\b(what else|anything else|what can you do|capabilities|help|commands|options)\b/i.test(lwcmd)) {
+    if (lwcmd.includes("else")) {
+        return createChatResponse("Beyond these commands, I can chat a bit and try to figure out what you mean. My main gig is to guide you through Chris's profile. You can try asking about his 'skills', 'projects', or 'experience'. Here's the full command list again for a refresh:", 'help');
+    }
+    return createChatResponse("Deadset, I got you. Here's the full rundown of commands:", 'help');
+}
+if (/\b(who are you|what are you|who made you|about magnus|more about you|are you (real|ai|magnus|human|code)|jarvis|how.*work|what tech|gpt)\b/i.test(lwcmd)) {
+    return createChatResponse("I'm MAGNUS, the AI core of this terminal. ⚡ My creator, Chris, is super into building language models like me. In fact, I'm an open-source project you can check out yourself. Peep the deets:", 'other');
+}
 
-
-  // Personal & Fun Questions
-  if (/\b(why the name|heavylildude name)\b/i.test(lwcmd)) { return createChatResponse("It's a long story involving a love for irony and heavy tunes, brah. 🤘");}
-  if (/\b(surf|motorcycles|skateboarding)\b/i.test(lwcmd)) { return createChatResponse("Deadset. When he's not in the code cave, he's chasing waves on his surfskate or riding his motorbike. It's all about balance. 🏄‍♂️🏍️");}
-  if (/\b(based in|where.*live|jakarta)\b/i.test(lwcmd)) { return createChatResponse("He's based in Jakarta, Indonesia. Soaking up the tropical vibes. 🌴");}
-  if (/\b(music|vibe to)\b/i.test(lwcmd)) { return createChatResponse("Usually some heavy post-rock or chill electronic vibes. Gotta have the right soundtrack for coding.");}
-  if (/\b(game|gaming)\b/i.test(lwcmd)) { return createChatResponse("Definitely. From epic RPGs to indie gems. It's another world to explore.");}
-  if (/\b(setup|monitors|computer)\b/i.test(lwcmd)) { return createChatResponse("He's rockin' an Alienware 15 R3. It's a beast, perfect for coding and the occasional game. 👾");}
-  if (/\b(routine|work late|daily)\b/i.test(lwcmd)) { return createChatResponse("The hustle is real. It's a mix of teaching, coding, and finding time to ride. Late nights are definitely part of the grind when inspiration hits.");}
-  if (/\b(social media|follow|discord|twitter)\b/i.test(lwcmd)) { return createChatResponse("Bet. You can follow the digital breadcrumbs here:", 'social');}
-
-  // Meta & Oddball Questions
-  if (/\b(remember me|my data safe|private or public|store.*chats|memory)\b/i.test(lwcmd)) { return createChatResponse("All chill, mate. This is a stateless terminal. I don't store any of your data or remember who you are. Your secrets are safe with you. 🤙");}
-  if (/\b(difference.*chatgpt)\b/i.test(lwcmd)) { return createChatResponse("ChatGPT is like a massive library; I'm like the local surf shop owner. I know everything about this one spot (Chris's profile) and I've got way more style. 💀");}
-  if (/\b(joke|jokes)\b/i.test(lwcmd)) { return handleJoke(); }
-  if (/\b(poem|freestyle|roast|review|pitch|brainstorm|logo|pretend|interview|quiz|motivational|secrets)\b/i.test(lwcmd)) {
+// META & ODDBALL
+if (/\b(remember me|my data safe|private or public|store.*chats|memory)\b/i.test(lwcmd)) { return createChatResponse("All chill, mate. This is a stateless terminal. I don't store any of your data or remember who you are. Your secrets are safe with you. 🤙");}
+if (/\b(difference.*chatgpt)\b/i.test(lwcmd)) { return createChatResponse("ChatGPT is like a massive library; I'm like the local surf shop owner. I know everything about this one spot (Chris's profile) and I've got way more style. 💀");}
+if (/\b(joke|jokes)\b/i.test(lwcmd)) { return handleJoke(); }
+if (/\b(poem|freestyle|roast|review|pitch|brainstorm|logo|pretend|interview|quiz|motivational|secrets)\b/i.test(lwcmd)) {
     if (lwcmd.includes("poem")) return createChatResponse("Roses are red, my screen is blue, `sudo apt-get install` good-vibes-for-you.");
     if (lwcmd.includes("secret")) return createChatResponse("My memory gets wiped clean every session, so yeah, you could say I'm a vault. 💀");
     if (lwcmd.includes("roast") || lwcmd.includes("review")) return createChatResponse("I'm coded for stoke, not smoke, brah! But I bet Chris could give you some killer feedback. Hit him up.");
     return createChatResponse("That's a sick idea, but a bit beyond my current programming. I'm geared up to tell you about Chris, but for creative brainstorming, you'd have to ping the man himself!");
-  }
-  
-  // Catch-all for out-of-scope personal questions
-  if (/\b(what's|does|is).*?(his|chris|he|hld).*?(favourite|fav|like|love|hate|enjoy|live|married|food|color|movie|steak|music|anime)\b/i.test(lwcmd)) {
-      return handleOutOfScope();
-  }
-  
+}
+
+// --- Client & Project Questions (V2.1 - Enriched Vocabulary) ---
+
+// This structure checks for specific client names first. It's more direct.
+if (/\b(bahana)\b/i.test(lwcmd)) {
+    return createChatResponse(
+        `Aight, so **Bahana TCW**? They're a heavy-hitter in the Indonesian finance scene. 💰 We jumped in to give their BahanaLink platform a gnarly 2.0 glow-up, making a super smooth investment tool that's now part of the bigger One by IFG ecosystem.\n\n**The Stack:** Full-stack beast mode with **React.js, PHP, .NET, MsSQL, MySQL**, and a slick **CI/CD pipeline**.`,
+        'bahana'
+    );
+} else if (/\b(fif|fifgroup)\b/i.test(lwcmd)) {
+    return createChatResponse(
+        `**FIFGROUP** is another big player. For them, we dove into the deep end, shipping some epic **WebXR** and **WebGL** experiences—think 3D magic in your browser. ✨ We also built out mobile apps and PWAs to level up their customer game.\n\n**The Stack:** **Node.js, React Native, WebXR, WebGL**, and pure **JavaScript** to make the magic happen.`,
+        'fifgroup'
+    );
+} else if (/\b(asabri)\b/i.test(lwcmd)) {
+    return createChatResponse(
+        `**ASABRI** was a deadset serious project, handling pensions for Indonesia's military and police. 🛡️ We engineered their flagship app, Asabrilink, to be absolutely bulletproof—secure, efficient, and reliable.\n\n**The Stack:** Heavy-duty tech including **React.js, PHP, .NET**, and robust **SQL databases**.`,
+        'asabri'
+    );
+} else if (/\b(aswara)\b/i.test(lwcmd)) {
+    return createChatResponse(
+        `This one was a sick creative vibe. **ASWARA** is Malaysia’s National Academy of Arts. 🎨 We helped them mix old-school tradition with new-school tech, building wicked **Augmented Reality** projects to bring Malaysian culture to life.\n\n**The Stack:** Deep in the 3D web with **AR.js, WebGL, Three.js**, and **A-Frame**.`,
+        'aswara'
+    );
+} else if (/\b(kalasan)\b/i.test(lwcmd)) {
+    return createChatResponse(
+        `From the kitchen to the cloud! 🍛 For **Kalasan Baby**, we built their entire digital backbone from the ground up—web app, database, and an **ERP** to streamline their ops and support their unique food packages.\n\n**The Stack:** A modern setup with **Node.js, PHP/Illuminate**, and a solid **MySQL** database.`,
+        'kalasan'
+    );
+} 
+// **UPDATED FALLBACK:** Now catches a wider range of words for a more natural feel.
+else if (/\b(client|project|work|portfolio|case stud(y|ies)|built|created|made|developed|shipped|done)\b/i.test(lwcmd)) {
+    return createChatResponse(
+        "Stoked you asked! He's shipped some gnarly stuff for clients like **Bahana TCW**, **FIFGROUP**, **ASABRI**, **ASWARA**, and **Kalasan Baby**. Wanna get the deets on any of 'em?",
+        'projects'
+    );
+}
+
+// --------------------------------------------------------------
+
   // --- Calculator ---
   if (lwcmd.startsWith("calc ")) {
     try {
