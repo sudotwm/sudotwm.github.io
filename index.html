@@ -868,6 +868,69 @@ const slctcmd = (command) => {
         return createChatResponse("Motion graphics too. Wanna see projects with flair?", 'projects');
       }
 
+      // === PRICE / COST related (20 variations) ===
+if (/\b(price|how much|cost|rates|fees|rate|fee|pay|wage)\b/i.test(lwcmd)) {
+  return createChatResponse("Money talk 👀 best handled direct. Wanna chat numbers? Hit contact:", 'contact');
+}
+if (/\b(project cost|what’s a project cost|price of project)\b/i.test(lwcmd)) {
+  return createChatResponse("Every wave’s different, every project too 🌊. Slide into contact for deets:", 'contact');
+}
+if (/\b(you expensive|are you pricey|expensive bro)\b/i.test(lwcmd)) {
+  return createChatResponse("Value > price, mate. Wanna see what it’d look like for you?", 'contact');
+}
+if (/\b(rate card|pricing list|your rates)\b/i.test(lwcmd)) {
+  return createChatResponse("Not a cookie-cutter thing. Wanna get the actual scoop? Hit contact:", 'contact');
+}
+if (/\b(hourly rate|per hour|charge per hour)\b/i.test(lwcmd)) {
+  return createChatResponse("Hourly’s flexible, project’s solid — let’s tailor it. Tap contact:", 'contact');
+}
+if (/\b(project budget|budget for work)\b/i.test(lwcmd)) {
+  return createChatResponse("Budget’s a conversation, not a barrier 🚀. Best place? Contact:", 'contact');
+}
+if (/\b(quote|can I get a quote|quotation)\b/i.test(lwcmd)) {
+  return createChatResponse("Quotes are custom-made, like surfboards. Wanna order one? Contact:", 'contact');
+}
+if (/\b(how much does a website cost|site cost)\b/i.test(lwcmd)) {
+  return createChatResponse("Depends how rad you want it 🤟. Wanna scope it out? Contact:", 'contact');
+}
+if (/\b(app cost|how much an app|price for app)\b/i.test(lwcmd)) {
+  return createChatResponse("Apps scale like skyscrapers. Wanna see your floor plan? Contact:", 'contact');
+}
+if (/\b(cheap|affordable|low cost)\b/i.test(lwcmd)) {
+  return createChatResponse("Chris balances quality + fair price 💯. Wanna talk terms? Contact:", 'contact');
+}
+if (/\b(proposal|estimate|project estimate)\b/i.test(lwcmd)) {
+  return createChatResponse("Estimates are all project-specific 📊. Wanna grab yours? Contact:", 'contact');
+}
+if (/\b(payment terms|how do you charge|pay structure)\b/i.test(lwcmd)) {
+  return createChatResponse("Super flexible on terms. Wanna lock it down? Contact:", 'contact');
+}
+if (/\b(is consultation free|consultation fee)\b/i.test(lwcmd)) {
+  return createChatResponse("Consult’s a convo, mate 🤝. Wanna kick it off? Contact:", 'contact');
+}
+if (/\b(downpayment|deposit|advance)\b/i.test(lwcmd)) {
+  return createChatResponse("Yep, usually a little upfront to start the engines 🚗. Details? Contact:", 'contact');
+}
+if (/\b(long project cost|ongoing rate|retainer)\b/i.test(lwcmd)) {
+  return createChatResponse("Long-term means better deals 🔥. Wanna explore? Contact:", 'contact');
+}
+if (/\b(custom project|tailored pricing)\b/i.test(lwcmd)) {
+  return createChatResponse("Every build’s bespoke, mate. Wanna scope a custom plan? Contact:", 'contact');
+}
+if (/\b(price negotiable|can we bargain|discount)\b/i.test(lwcmd)) {
+  return createChatResponse("Convos > discounts. Let’s chat it out in contact:", 'contact');
+}
+if (/\b(how much for redesign|cost to rebuild)\b/i.test(lwcmd)) {
+  return createChatResponse("Redesigns vary, mate. Wanna break it down for your case? Contact:", 'contact');
+}
+if (/\b(cost for maintenance|support fee)\b/i.test(lwcmd)) {
+  return createChatResponse("Ongoing support keeps the waves steady 🌊. Wanna chat terms? Contact:", 'contact');
+}
+if (/\b(price transparency|hidden fees)\b/i.test(lwcmd)) {
+  return createChatResponse("No hidden tricks here 🪄. Wanna see straight-up numbers? Contact:", 'contact');
+}
+
+
 // === ABOUT Chris/hld (50 variations) ===
 if (/\b(who are you|who is chris|tell me about hld)\b/i.test(lwcmd)) {
   return createChatResponse("That’d be Chris — full-stack dev, designer, educator. Wanna read his story?", 'about');
