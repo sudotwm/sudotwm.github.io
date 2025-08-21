@@ -684,9 +684,9 @@ if (/\b(who+are|tell+me+about|show+me|tell+about|tell|who+is|who|show).*?(your|h
     return createChatResponse("Stoked you asked! Here’s a look at some client work and case studies:", 'projects');
 }
 // 3rd-person: asking about Chris/HLD pricing
-if (/\b(?:what(?:'|’)?s|what\s+is|how\s+much|his|chris|hld|heavylildude)\b.*\b(?:price|pricing|rate|cost|fee|charge|worth|budget|expensive|project\s+cost|costs?)\b/i.test(lwcmd)) {
+if (/^(?=.*\b(?:you|ya|u|ur|your|chris(?:['\u2019])?s?|chris|hld(?:['\u2019])?s?|hld|heavylildude|he|his)\b)(?=.*(?:\b(?:how\s*much|price|pricing|rates?|costs?|fee?s?|charge?s?|budget|expensive|project\s*cost|quote|quotation|estimate|estimation|hourly|per\s*(?:hour|project)|retainer|start(?:ing)?\s*at|from)\b|[$]|€|£|\b(?:idr|rp|usd)\b|\b(?:harga|biaya|tarif|rupiah)\b)).*$/i.test(lwcmd)) {
   return createChatResponse(
-    "Wanna know Chris’s rates? Best move is to reach out directly — drop a line and let’s chat it through 👉",
+    "Wanna know the rates? Hit me up with the deets — I’ll sort a proper quote 👉",
     'contact'
   );
 }
